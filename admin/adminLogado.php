@@ -24,6 +24,7 @@
                  <li><a target='tela' href='listar.php?tipoUser=2'> Restritos </a></li>
                  <li><a target='tela' href='listar.php?tipoUser=3'> Colunistas </a></li>
                  <li><a target='tela' href='listarDesativados.php?tipoUser=4'> Desativados </a></li>
+                 <li><a target='tela' href='log.php'> Log </a></li>
                  <li><a target='tela' href='novoUsuario.php'> Novo Usuário </a></li>
                  <li><a href='sair.php'> Logout</li>
             </ul>

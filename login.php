@@ -38,17 +38,17 @@ else{
         mysql_query($sql);
         }
         if($tipoUSUARIO === '3'){
-            $mensagem = "Usuário ". $_SESSION['nome'] . " Efetuo Login";
+            $mensagem = $_SESSION['nome'] . " Efetuo Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
         }
         if($tipoUSUARIO === '2'){
-            $mensagem = "Usuário ". $_SESSION['nome'] . " Efetuo Login";
+            $mensagem = $_SESSION['nome'] . " Efetuo Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
         }
     else if($tipoUSUARIO === '1'){
-            $mensagem = "Usuário " . $_SESSION['nome'] . " Efetuo Login";
+            $mensagem = $_SESSION['nome'] . " Efetuo Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
     }

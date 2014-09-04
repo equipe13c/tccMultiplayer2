@@ -34,7 +34,7 @@
             <article id="conteudo">
                         <?php
                         $tituloArtigo = $_POST['nome_artigo'];
-                            $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO = '$tituloArtigo'";
+                            $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%".$tituloArtigo."%'";
                             $total_reg = "3";
                             $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
                             $inicio = $pc - 1; 

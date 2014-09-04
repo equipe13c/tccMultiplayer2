@@ -11,7 +11,7 @@ function salvaLog($mensagem) {
         VALUES('$ip','$dia', '$hora', '$mensagem', '$acao','".$_SESSION['email']."',".$_SESSION['code'].")";
         mysql_query($sql);
         }
-        $mensagem = "Usuário ".$_SESSION['nome'] . "Efeutou Logout";
+        $mensagem = $_SESSION['nome'] . " Efeutou Logout";
         salvaLog($mensagem);
 session_destroy();
 echo '<script>

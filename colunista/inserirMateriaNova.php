@@ -170,8 +170,8 @@ $urlBanco = "$pastaTipo/$url.php";
 
 
   
-    $query = "INSERT INTO ARTIGO (TITULO_ARTIGO, CATEGORIA_ARTIGO, DESCRICAO_ARTIGO, CONTEUDO_ARTIGO, DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, IMAGEM1_ARTIGO,IMAGEM2_ARTIGO,IMAGEM_MINIATURA,URL_ARTIGO)
-        VALUES('$nome', $tipo, '$descricao', '$conteudo', '$data', '$hora', '$autor', '$nome_imagem','$nome_imagem2','$nome_imagem3','$urlBanco')";
+    $query = "INSERT INTO ARTIGO (TITULO_ARTIGO, CATEGORIA_ARTIGO, DESCRICAO_ARTIGO, CONTEUDO_ARTIGO, CONTEUDO2_ARTIGO, DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, IMAGEM1_ARTIGO,IMAGEM2_ARTIGO,IMAGEM_MINIATURA,URL_ARTIGO)
+        VALUES('$nome', $tipo, '$descricao', '$conteudo', '$conteudo2', '$data', '$hora', '$autor', '$nome_imagem','$nome_imagem2','$nome_imagem3','$urlBanco')";
    
     if(mysql_query($query)){
     echo "Matéria inserida com sucesso!<br/>";
@@ -220,16 +220,62 @@ $corpo = '<!DOCTYPE html>
                       <h3 class="texto_titulo">'.$nome.'</h3>
                     </header>
                     <figure class="imagem_materia">
-                    <img src="../uploads/'.$nome_imagem.'" alt="" class="imagens">
+                <?php
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '."'%".$nome."%'".'";
+                $result = mysql_query($query);                
+                $imagens = mysql_num_rows($result);
+                if($imagens === 0){
+                ECHO "Nenhuma imagem encontrada";
+                }
+                else{
+                $imagens2 = mysql_fetch_array($result); 
+                $urlImagem = $imagens2['."'IMAGEM1_ARTIGO'".'];
+                echo '."'".'<img src='.'"../uploads/'."'".'.$urlImagem.'."'".'" class='.'"imagens"'.' alt='.'"imagem"'.'>'."'".';'.'
+                    }
+                    ?>
                     </figure>
                     <p class="texto_materia2">
-                    '.$conteudo.'
+                <?php
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '."'%".$nome."%'".'";
+                $result = mysql_query($query);                
+                $imagens = mysql_num_rows($result);
+                if($imagens === 0){
+                ECHO "Nenhuma imagem encontrada";
+                }
+                else{
+                $imagens2 = mysql_fetch_array($result); 
+                echo $urlImagem = $imagens2['."'CONTEUDO_ARTIGO'".'];
+                    }
+                    ?>
                     </p>
                     <figure class="imagem_materia">   
-                    <img src="../uploads/'.$nome_imagem2.'" alt="" class="imagens">
+                <?php
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '."'%".$nome."%'".'";
+                $result = mysql_query($query);                
+                $imagens = mysql_num_rows($result);
+                if($imagens === 0){
+                ECHO "Nenhuma imagem encontrada";
+                }
+                else{
+                $imagens2 = mysql_fetch_array($result); 
+                $urlImagem = $imagens2['."'IMAGEM2_ARTIGO'".'];
+                echo '."'".'<img src='.'"../uploads/'."'".'.$urlImagem.'."'".'" class='.'"imagens"'.' alt='.'"imagem"'.'>'."'".';'.'
+                    }
+                    ?>
                     </figure>
                     <p class="texto_materia2">
-                    '.$conteudo2.'
+                <?php
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '."'%".$nome."%'".'";
+                $result = mysql_query($query);                
+                $imagens = mysql_num_rows($result);
+                if($imagens === 0){
+                ECHO "Nenhuma imagem encontrada";
+                }
+                else{
+                $imagens2 = mysql_fetch_array($result); 
+                echo $urlImagem = $imagens2['."'CONTEUDO2_ARTIGO'".'];
+                    }
+                    ?>
                     </p>
                     <footer id="autor_materia">
                         <figure class="imagem_autor"> 
