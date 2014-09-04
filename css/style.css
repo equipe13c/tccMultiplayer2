@@ -1,0 +1,426 @@
+*{
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+}
+#container{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+#cabecalho {
+    width: 100%;
+    height: 160px;
+    margin-top:0px;
+    margin-left:0px;
+}
+#logo{
+    width: 20%;
+    height: 144px;
+    float:left;
+    margin-top:0px;
+    margin-left:0px;
+}
+#menu{
+    width: 80%;
+    height: 32px;
+    float:left;
+    margin-top:0px;
+    margin-left:0px;
+}
+#conteudo{
+    width: 100%;
+    height: 600px;
+    float:left;
+    margin-top:32px;
+    margin-left:0px;
+    box-shadow: 2px 2px 5px black;
+    border:1px solid black;
+}
+#rodape{
+    width: 100%;
+    height: 180px;
+    background-color: blueviolet;
+    float:left;
+    margin-top:32px;
+    margin-left:0px;
+}
+#img-logo{
+    width: 76%;
+    height: 144px;
+    margin-top:0px;
+    margin-left:24px;
+}
+.menu{
+list-style:none; 
+border:1px solid #c0c0c0; 
+float:left; 
+width:100%;
+}
+.menu li{
+position:relative;
+float:left;
+border-right:1px solid #c0c0c0;
+width:16%;
+text-align: center;
+}
+.menu #homeinfo{
+position:relative;
+float:left;
+border-right:1px solid #c0c0c0;
+width:12%;
+text-align: center;
+}
+ .menu #outras{
+position:relative;
+float:left;
+border-right:1px solid #c0c0c0;
+width:19.1945%;
+text-align: center;
+}
+.menu #xboxInfo{
+position:relative;
+float:left;
+border-right:1px solid #c0c0c0;
+width:12%;
+text-align: center;
+}
+.menu #pcinfo{
+position:relative;
+float:left;
+border-right:1px solid #c0c0c0;
+width:7.91%;
+text-align: center;
+}
+.menu li a{
+    color:#333; 
+    text-decoration:none; 
+    padding:5px 10px; 
+    display:block;
+}
+.menu li a:hover{
+background:#333;
+color:#fff;
+-moz-box-shadow:0 3px 10px 0 #CCC;
+-webkit-box-shadow:0 3px 10px 0 #ccc;
+text-shadow:0px 0px 5px #fff;
+}
+.menu li  ul{
+position:absolute;
+top:25px;
+left:0;
+background-color:#fff;
+display:none;
+margin-top:5px;
+}  
+.menu li:hover ul, .menu li.over ul{
+    display:block;
+}
+.menu li ul li{
+border:1px solid #c0c0c0;
+display:block;
+width:100%;
+}
+#login{
+    width: 30%;
+    height: 112px;
+    float:right;
+    margin-top:0px;
+    margin-left:0px;
+}
+#frmLogin{
+    width:80%;
+    height:120px;
+    float:left;
+    margin-top:10px;
+    margin-left:0px;
+    border-radius: 10px;
+}
+.stringLogin{
+    float:left;
+    font-family: initial;
+    font-size:14pt; 
+    line-height: 16pt;
+    margin-left:10px;
+    margin-top:10px;
+}
+.txtLogin{
+    float:right;
+    line-height: 13pt;
+    margin-right:10px;
+    margin-top:10px;
+    border-radius: 3px;
+}
+
+#btnLogin{
+    float:left;
+    width:30%;
+    margin-left:10px;
+    margin-top:10px;
+    color:#333;
+    border-radius: 4px;
+    background-color:silver;
+    cursor:pointer;
+}
+.linksLogin{
+    float:left;
+    margin-left:15px;
+    margin-top:-5px;
+}
+.linksLogin:hover{
+    color:blanchedalmond;
+}
+.materias{
+    width: 70%;
+    height: 160px;
+    float:left;
+    margin-top:24px;
+    margin-left:24px;
+    border:1px solid black;
+}
+.figura_materia{
+    width: 30%;
+    height: 140px;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+    border:1px solid black;
+}
+.imagem_miniatura_materia{
+    width: 100%;
+    height: 140px;
+    float:left;
+    margin-top:0px;
+    margin-left:0px;
+}
+.texto_materia{
+    width: 65%;
+    height: 140px;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+    border:1px solid black;
+}
+#busca{
+    width: 20%;
+    height: 40px;
+    float:left;
+    margin-top:10px;
+    margin-left:10px;
+}
+#name_materia{
+    float:left;
+    margin-top:70px;   
+}
+#busca_materia{
+    float:left;
+    border-radius:3px;
+    margin-top:70px;
+    margin-left:5px;
+}
+#frmCadastro{
+    width: 50%;
+    height: 320px;
+    float:left;
+    margin-top:50px;
+    margin-left:250px;
+}
+.vars{
+    font-family: cursive;
+    font-size:12pt;  
+    line-height: 20pt;
+    margin-top:6px;
+}
+.txts{
+    float:right;
+    height:17px;
+    margin-top:4px;
+    border-radius:2px;
+}
+.validacoes{
+    width:30%;
+    margin-top:4px;
+    float:right;
+    height:20px;
+}
+#captchaPalavra{
+    margin-right:155px;
+}
+#captcha2{
+    float:left;
+    width:25%;
+    height:40px;
+    margin-top:20px;
+}
+#captcha{
+    float:left;
+    width:100%;
+    height:40px;
+}
+#atualizarCaptcha{
+    float:left;
+    margin-left:75px;
+    margin-top:15px;
+    font-family: TimeNewROman;
+    font-size:14pt;
+    cursor: pointer;
+}
+#atualizarCaptcha:hover{
+    color:wheat;
+}
+#btnCad{
+    float:left;
+    margin-left:80px;
+    
+}
+.btnCads{
+    float:left;
+    margin-left:20px;
+    margin-top:20px;
+    height:30px;
+    color:#333;
+    border-radius: 4px;
+    width:20%;
+    background-color:silver;
+    cursor:pointer;
+}
+.btnCads:hover{
+    color:white;
+}
+#msglogin{
+    float:left;
+    margin-left:20px;
+    width:55%;
+    height:10px;
+    margin-top:10px;
+}
+.msgloginE{
+    color:chartreuse;
+    font-size:10pt;
+    font-family: cursive;
+}
+.msgloginF{
+    color:red;
+    font-size:8pt;
+    font-family: cursive;
+}
+.foto_usuario{
+    width:70%;
+    height:30px;
+    margin-left:15px;
+    float:left;
+}
+#imagem_usuario{
+    width:15%;
+    height:20px;
+    margin-left:0px;
+    margin-left:5px;
+    margin-top:15px;
+    float:left;
+}
+#nome_adm{
+    margin-left:5px;
+    margin-top:17px;
+    font-size:10pt;
+    font-family: century gothic;
+    float:left;
+}
+.links_usuario{
+        margin-left:18px;
+    margin-top:10px;
+    float:left;
+}
+.links_usuario a{
+    font-size:12pt;
+    font-family: century gothic;
+    text-decoration: none;
+}
+.links_usuario a:hover{
+color:bisque;
+}
+#conteudo_materia{
+    width: 100%;
+    height: 1440px;
+    float:left;
+    margin-top:32px;
+    margin-left:0px;
+    box-shadow: 2px 2px 5px black;
+    border:1px solid black;
+}
+#materia_conteudo{
+    width:70%;
+    height:1440px;
+}
+#titulo_materia{
+    width:100%;
+    height:40px;
+    float:left;
+    margin-left:0px;
+    margin-top:0px;
+}
+.texto_titulo{
+   text-align:center;
+   font-size:12pt;
+   margin-left:0px;
+   margin-top:10px;
+   font-family: cursive;
+}
+.imagem_materia{
+    width:75%;
+    height:300px;
+    float:left;
+    margin-top:40px;
+    margin-left:85px;
+}
+.imagens{
+    width:100%;
+    height:300px;
+    float:left;
+    margin-top:0px;
+    margin-left:0px;
+}
+.texto_materia2{
+    width:90%;
+    height:170px;
+    float:left;
+    margin-top:40px;
+    margin-left:30px;
+    font-size: 12pt;
+    font-style: normal;
+    text-align: justify;
+}
+#autor_materia{
+    width:100%;
+    height:170px;
+    float:left;
+    margin-top:120px;
+    margin-left:0px;
+}
+.imagem_autor{
+    width:20%;
+    height:130px;
+    float:left;
+    margin-top:20px;
+    margin-left:20px;
+}
+.imagem_autor2{
+    width:100%;
+    height:130px;
+    float:left;
+    margin-top:0px;
+    margin-left:0px;
+}
+.texto_autor{
+    width:70%;
+    height:130px;
+    border:1px solid black;
+    float:left;
+    margin-top:20px;
+    margin-left:20px;
+    font-size: 12pt;
+    font-style: normal;
+    text-align: justify;
+}
+.testeUsers{
+    margin-left:20px;
+    margin-top:10px;
+}
