@@ -10,9 +10,9 @@
 session_start();
 include '../conexao/conecta.inc';
 include '../includes/funcoesUteis.inc';
-    $nome_user = $_POST['nome_user'];
+$nome_user = $_POST['nome_user'];
 
-$query = "SELECT * FROM USUARIO WHERE NOME_USUARIO = '$nome_user' ORDER BY COD_USUARIO ASC";
+$query = "SELECT * FROM USUARIO WHERE NOME_USUARIO LIKE '%$nome_user%' ORDER BY COD_USUARIO ASC";
 $total_reg = "10";
 $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
 $inicio = $pc - 1; 

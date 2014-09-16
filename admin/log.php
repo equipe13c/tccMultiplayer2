@@ -16,7 +16,7 @@
         <nav id="menuOpcoes">
             <ul class="home">
                 <div id='busca'>
-                    <form action='buscarLogusuario.php' method='post'>
+                    <form action='logUsuario.php' method='get'>
                     <label id='name_busca'>Busca de Usuário:</label>
                     <input type='text' onKeyPress='return letras();' name='nome_user_log'>
                     </form>

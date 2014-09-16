@@ -19,6 +19,7 @@ $email = $_POST['email'];
 $senha = $_POST['password'];
 $code = $_POST['cod_user'];
 $tipo = $_POST['tipo'];
+$apelido = $_POST['apelido'];
 
         function salvaLog($mensagem) {
         $ip = $_SERVER['REMOTE_ADDR']; // Salva o IP do visitante
@@ -36,10 +37,10 @@ $tipo = $_POST['tipo'];
         }
 
         
-$sql = "UPDATE USUARIO SET NOME_USUARIO = '$name', EMAIL_USUARIO = '$email', SENHA_USUARIO = '$senha' WHERE COD_USUARIO = $code";
+$sql = "UPDATE USUARIO SET NOME_USUARIO = '$name', APELIDO_USUARIO='$apelido',  EMAIL_USUARIO = '$email', SENHA_USUARIO = '$senha' WHERE COD_USUARIO = $code";
   if(mysql_query($sql)){
     echo "Dados Atualizados<br/>";
-    $mensagem = "Usuário $name";
+    $mensagem = "Usuário $apelido";
     salvaLog($mensagem);
 }
 else{
@@ -91,7 +92,7 @@ $sql = "UPDATE IMAGEM_USUARIO SET URL_IMAGEM = '$nome' WHERE COD_IMAGEM_USUARIO 
 if(mysql_query($sql)){
     echo "Imagem Atualizada<br/>";
     echo "<a href=listar.php?tipoUser=$tipo>Voltar</a>";
-    $mensagem = "Usuário $name";
+    $mensagem = "$apelido Alterou à Foto";
     salvaLog($mensagem);
     
 }

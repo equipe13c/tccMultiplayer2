@@ -37,6 +37,10 @@
                             <div class="validacoes" id="msName"></div>
                             <input type="text" class="txts" name="nome"  onKeyPress="return letras();" placeholder="Nome de Acesso" /> 
                             <br/>
+                            <label class="vars"> Apelido: </label>
+                            <div class="validacoes" id="msName"></div>
+                            <input type="text" class="txts" name="apelido" maxlength="20"  onKeyPress="return letras();" placeholder="Apelido" /> 
+                            <br/>
                             <label id="nameCad_email" class="vars">Email: </label>
                             <div class="validacoes" id="msgemail"></div>
                             <input  type="text" name="email" onblur="validacaoEmail(formCad.email,'msgemail');" class="txts"  id="email" placeholder="Digite seu E-mail" />

@@ -4,6 +4,7 @@ include_once 'classes/Bcrypt.class.php';
 session_start();
 echo "<meta charset=UTF-8>";
 $nome = $_POST['nome'];
+$apelido = $_POST['apelido'];
 $senha = $_POST['senha'];
 $confirmsenha = $_POST['confirmsenha'];
 $email = $_POST['email'];
@@ -30,8 +31,8 @@ if ($_POST["palavra"] == $_SESSION["palavra"]){
 if(!($senha !== $confirmsenha)&& !($email !== $confirmemail))
 {
     $senha = Bcrypt::hash($senha);
-    $query = "INSERT INTO USUARIO (NOME_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, DATA_NASCIMENTO, TIPO_USUARIO)
-        VALUES('$nome', '$senha', '$email', '$data', $tipo)";
+    $query = "INSERT INTO USUARIO (NOME_USUARIO,APELIDO_USUARIO, SENHA_USUARIO, EMAIL_USUARIO, DATA_NASCIMENTO, TIPO_USUARIO)
+        VALUES('$nome','$apelido', '$senha', '$email', '$data', $tipo)";
 if($email === ""){
     echo "Desculpe, Campo de E-mail nao Definidos";
 }

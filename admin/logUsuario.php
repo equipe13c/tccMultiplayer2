@@ -10,9 +10,8 @@
 session_start();
 include '../conexao/conecta.inc';
 include '../includes/funcoesUteis.inc';
-$tipoLog = $_GET['tipoLog'];
-$query = "SELECT * FROM LOG WHERE ACAO_LOG = $tipoLog";
-
+$nome_user_log = $_GET['nome_user_log'];
+$query = "SELECT * FROM LOG WHERE MENSAGEM_LOG LIKE '%$nome_user_log%'";
 $total_reg = "10";
 $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
 $inicio = $pc - 1; 
@@ -28,8 +27,7 @@ if($tr == 0){
 else{
 echo "<div id='busca'>"
 ."<form action='buscarLogusuario.php' method='get'>"
-. "<label id='name_busca_log'>Busca de Usuário</label>"
-        . "<input type='hidden' value='$tipoLog' name='tipo_log'>"
+. "<label id='name_busca'>Busca de Usuário</label>"
         . "<input type='text' onKeyPress='return letras();' name='nome_user_log'>"
         . "</form>"
         . "</div>";
@@ -40,7 +38,7 @@ echo "<div class='tables'>";
     echo "<th>IP</th>";
     echo "<th>Data</th>";
     echo "<th>Hora</th>";
-    echo "<th>Ação</th>";
+    echo "<th>Mensagem</th>";
     echo "<th>Autor</th>";
     echo "</tr>";
 while($usuarios = mysql_fetch_array($limite))
@@ -61,7 +59,7 @@ echo "</table>";
 $anterior = $pc -1; 
    $proximo = $pc +1; 
    if ($pc>1) 
-       { echo " <a href='?pagina=$anterior&tipoLog=$tipoLog'><- Anterior</a> "; 
+       { echo " <a href='?pagina=$anterior&nome_user_log=$nome_user_log'><- Anterior</a> "; 
        
        } 
        if($pc ==1){/*CODIGO A APARECER PARA VOLTAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
@@ -69,11 +67,11 @@ $anterior = $pc -1;
        // Inicio lógica rogerio
        for($i=1;$i<=$tp;$i++)
        {
-           echo "<a href=?pagina=$i&tipoLog=$tipoLog>".$i . "</a>" . "    ";
+           echo "<a href=?pagina=$i&nome_user_log=$nome_user_log>".$i . "</a>" . "    ";
        }
        // Fim lógia rogério
        if ($pc<$tp) 
-           { echo " <a href='?pagina=$proximo&tipoLog=$tipoLog'>Próxima -></a>"; 
+           { echo " <a href='?pagina=$proximo&nome_user_log=$nome_user_log'>Próxima -></a>"; 
            
            }
       if($pc == $tp){/*CODIGO A APARECER PARA PASSAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério

@@ -47,6 +47,7 @@ echo "<div class='tables'>";
     echo "<tr>";
     echo "<th>Código</th>";
     echo "<th>Nome</th>";
+    echo "<th>Apelido</th>";
     echo "<th>E-mail</th>";
     echo "<th>Tipo</th>";
     echo "<th>Data Nasc.</th>";
@@ -65,6 +66,7 @@ while($usuarios = mysql_fetch_array($limite))
         echo "<tr>";
         echo "<td><input type='text' readonly='readonly' class='edituser' size='5'  id='usuarioTable' name='cod_user' value='" . $usuarios['COD_USUARIO'] . "'></td>";
         echo "<td><input type='text' readonly='readonly' class='edituser' size='25'  id='usuarioTable' name='name' value='" . $usuarios['NOME_USUARIO'] . "'></td>";
+        echo "<td><input type='text' readonly='readonly' class='edituser' size='25'  id='usuarioTable' name='apelido' value='" . $usuarios['APELIDO_USUARIO'] . "'></td>";
         echo "<td><input type='text' readonly='readonly' class='edituser' size='35'  id='usuarioTable' name='email' value='" . utf8_encode($usuarios['EMAIL_USUARIO']) . "'></td>";
         echo "<td><input type='text' readonly='readonly' class='edituser' size='3'  id='usuarioTable' name='tipo' value='" . $usuarios['TIPO_USUARIO'] . "'></td>";
         echo "<td><input type='text' readonly='readonly' class='edituser' size='7'  id='usuarioTable' name='dataNasc' value='" . $usuarios['DATA_NASCIMENTO'] . "'></td>";

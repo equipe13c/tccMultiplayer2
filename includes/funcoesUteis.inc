@@ -21,7 +21,7 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -43,7 +43,7 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -65,7 +65,7 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -108,7 +108,7 @@ function VerificaSessao2(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -130,7 +130,7 @@ function VerificaSessao2(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -152,7 +152,7 @@ function VerificaSessao2(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -297,7 +297,7 @@ function verificaCOL_RES(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -319,7 +319,7 @@ function verificaCOL_RES(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['nome']."</h1>";
+                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
