@@ -184,7 +184,7 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['senha'])){
         
     }else{
     echo '<script> 
-        alert("Acesso negado!\n Você não efetuou login.")
+        alert("Acesso negado!\n Você não efetuouu login.")
     location.href="'.$link.'"
             </script>';
     }

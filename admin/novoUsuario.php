@@ -15,6 +15,7 @@ validaAutenticacao('../index.php', '1');
         <fieldset id="frmNovoUsuario">
         <form action="inserirUsuarioNovo.php" id="cadastroForm" method="post" name="formCad2"> 
              <label class="stringNovoUsuario">Nome:</label>            <input type="text" class="txtsNovoUsuario" size='35' onKeyPress="return letras();" name="nome" placeholder="Nome de Acesso"/> <br/>
+             <label class="stringNovoUsuario">Apelido:</label>            <input type="text" class="txtsNovoUsuario" size='35' onKeyPress="return letras();" name="apelido" placeholder="Nome Apelido"/> <br/>
              <label class="stringNovoUsuario">E-mail:</label>          <input type="email" class="txtsNovoUsuario" size='35' name="email" id="email" placeholder="Digite seu E-mail"/> <br/>
              <label class="stringNovoUsuario">Confirmar E-mail:</label><input type="email" class="txtsNovoUsuario" size='35' id="confirmemail" name="confirmemail" placeholder="Digite seu E-mail"/> <br/>
              <label class="stringNovoUsuario">Senha:</label>           <input type="password" class="txtsNovoUsuario" size='35' name="senha" placeholder="Senha"/> <br/>

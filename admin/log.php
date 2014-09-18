@@ -31,7 +31,7 @@
                  <li><a target='tela' href='listarLog.php?tipoLog=8'> Alteraram Nome </a></li>
                  <li><a target='tela' href='listarLog.php?tipoLog=9'> Comentaram Artigo </a></li>
                  <li><a target='tela' href='listarLog.php?tipoLog=10'> Fez Cadastro </a></li>
-                 <li><a target='tela' href='listarLog.php?tipoLog=11'> Efetuo Logout </a></li>
+                 <li><a target='tela' href='listarLog.php?tipoLog=11'> efetuou Logout </a></li>
             </ul>
         </nav>
              

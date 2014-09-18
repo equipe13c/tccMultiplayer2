@@ -8,10 +8,12 @@
 }
 
 #cabecalho {
-    width: 100%;
-    height: 160px;
+    width: 20%;
+    height: 112px;
     margin-top:0px;
     margin-left:0px;
+    float:right;
+    display:block;
 }
 #logo{
     width: 20%;
@@ -31,8 +33,10 @@
     width: 100%;
     height: 720px;
     float:left;
-    margin-top:32px;
+    margin-top:-32px;
     margin-left:0px;
+    float:left;
+    display:block;
 }
 #rodape{
     width: 100%;
@@ -119,10 +123,10 @@ display:block;
 width:100%;
 }
 #login{
-    width: 30%;
+    width: 100%;
     height: 112px;
     float:right;
-    margin-top:0px;
+    margin-top:-5px;
     margin-left:0px;
 }
 #frmLogin{
@@ -329,26 +333,79 @@ width:100%;
 color:bisque;
 }
 #frmNovaMateria{
-    width:50%;
+    width:40%;
     height:600px;
     float:left;
-    margin-left:280px;
-    margin-right: 0px;
-    border:0px;
+    margin-left:250px;
+    margin-top: -70px;
+    border:14px solid #049898;
 }
 .stringNovaMateria{
     float:left;
     font-size:12pt;
     font-weight: bold;
-    font-family: cursive;
-    margin-left:50px;
+    font-family: Century Gothic;
+    color:#049898;
+    margin-left:16px;
+    margin-top:5px;
+}
+.stringRadioNovaMateria{
+    float:left;
+    font-size:9pt;
+    font-weight: bold;
+    font-family: Century Gothic;
+    color:#049898;
+    margin-left:4px;
+    margin-top:2px;
+    float:left;
+}
+#check3{
+    margin-left: 10px;
+}
+.stringRadioNovaMateria2{
+    float:left;
+    font-size:9pt;
+    font-weight: bold;
+    font-family: Century Gothic;
+    color:#049898;
+    margin-left:4px;
+    margin-top:2px;
+    float:left;
+    margin-top:-11px;
+    
+}
+.txtsRadioNovaMateria{
+    float:left;
+    height:20px;
+    width:3%;
+    border:2px solid #049898;
+    margin-left:6px;
+    display:block;
+}
+#check1{
+    margin-left:108px;
+}
+.txtsRadioNovaMateria2{
+    float:left;
+    height:20px;
+    width:3%;
+    border:2px solid #049898;
+    margin-left:10px;
+    margin-top:-13px;
 }
 .txtsNovaMateria{
     float:right;
+    height:23px;
+    margin-top:5px;
+    margin-right:10px; 
+    border:2px solid #049898;
 }
 #text_1{
     width:60%;
     height:100px;
+}
+#nameCategoria{
+    margin-top:10px;
 }
 #text_2{
     width:60%;

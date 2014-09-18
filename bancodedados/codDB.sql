@@ -1,5 +1,5 @@
 INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`) 
-	VALUES (1, 'Efetuo Login');
+	VALUES (1, 'efetuou Login');
 INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`) 
 	VALUES (2, 'Alterou Foto');
 INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`) 
@@ -19,7 +19,7 @@ INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`)
 INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`) 
 	VALUES (10, 'Cadastro No Site');
 INSERT INTO multiplayer4.ACOES_LOG (`COD_ACOES_LOG`, `NOME_ACAO`) 
-	VALUES (11, 'Efetuo Logout');
+	VALUES (11, 'efetuou Logout');
 	
 INSERT INTO multiplayer4.TIPO (`COD_TIPO`, `TIPO_USUARIO`) 
 	VALUES (1, 'ADM');

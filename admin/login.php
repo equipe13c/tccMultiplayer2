@@ -18,6 +18,7 @@ else{
     $senhaUSUARIO = $USUARIOS['SENHA_USUARIO'];
     $tipoUSUARIO = $USUARIOS['TIPO_USUARIO'];
     $nomeUSUARIO = $USUARIOS['NOME_USUARIO'];
+    $apelidoUSUARIO = $USUARIOS['APELIDO_USUARIO'];
     if($tipoUSUARIO == "4"){
                echo "<script>loginF3();</script>";
             }
@@ -28,6 +29,7 @@ else{
         $_SESSION['nome'] = $nomeUSUARIO;
         $_SESSION['senha'] = $senha;
         $_SESSION['tipo'] = $tipoUSUARIO;
+        $_SESSION['apelido'] = $apelidoUSUARIO;
         $logado = true;
         function salvaLog($mensagem,$email) {
         $ip = $_SERVER['REMOTE_ADDR']; // Salva o IP do visitante
@@ -38,7 +40,7 @@ else{
         mysql_query($sql);
         }
     if($tipoUSUARIO === '1'){
-            $mensagem = "Usuário " . $_SESSION['nome'] . "Efetuo Login";
+            $mensagem = 'ADM: '.$_SESSION['apelido'] . " efetuou Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
     }

@@ -40,17 +40,17 @@ else{
         mysql_query($sql);
         }
         if($tipoUSUARIO === '3'){
-            $mensagem = $_SESSION['apelido'] . " Efetuo Login";
+            $mensagem = $_SESSION['apelido'] . " efetuou Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
         }
         if($tipoUSUARIO === '2'){
-            $mensagem = $_SESSION['apelido'] . " Efetuo Login";
+            $mensagem = $_SESSION['apelido'] . " efetuou Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
         }
     else if($tipoUSUARIO === '1'){
-            $mensagem = $_SESSION['apelido'] . " Efetuo Login";
+            $mensagem = 'ADM: '. $_SESSION['apelido'] . " efetuou Login";
             salvaLog($mensagem,$email);
             echo "<script>loginE();</script>";
     }
