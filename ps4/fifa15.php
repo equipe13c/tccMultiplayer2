@@ -98,7 +98,7 @@
                         <figure class="imagem_autor"> 
                         <?php
                         echo "<div class='foto_usuario'>";
-                $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = 21";
+                $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = 20";
                 $result = mysql_query($query);                
                 $imagens = mysql_num_rows($result);
                 if($imagens === 0){

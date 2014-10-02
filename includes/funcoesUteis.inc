@@ -20,7 +20,7 @@ function VerificaSessao(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
+                echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
                 echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
@@ -42,7 +42,7 @@ function VerificaSessao(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
+                echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
                 echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
@@ -64,7 +64,7 @@ function VerificaSessao(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
+                echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
                 echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
                 }
                 echo '</div><br/><br/>';
@@ -76,13 +76,16 @@ function VerificaSessao(){
                 }
                 }
                 else{
-                      echo'<form name="formulario" action="login.php" method="post" onsubmit="return validacao();"> 
-                            <label class="stringLogin">E-mail: </label><input type="email" class="txtLogin" name="email" placeholder="E-mail de Acesso" /><br/>
-                            <label class="stringLogin">Senha: </label><input type="password" class="txtLogin" name="senha" placeholder="Senha"/> <br/><br/>
-                            <input type="submit" name="submit" id="btnLogin" value="Entrar"/>
-                            <div id="msglogin"></div><br/><br/>
-                            <a class="linksLogin" href="esqueceuSenha.php"> Esqueceu sua senha? </a>
-                            <a class="linksLogin" href="cadastro.php" >Cadastre-se</a>
+                    
+                    echo '                    
+                        <form name="formulario" action="login.php" method="post" id="login"> 
+                        <img src="img/user.png" alt="" class="imgUsuario">
+                        <label class="txtLogin"> Usuário: </label><input type="email" name="email"><br/><br/>
+                        <label class="txtLogin"> Senha: </label><input type="password" name="senha"><br/><br/>
+                        <div id="msglogin"></div>
+                        <input type="submit" name="submit" class="btnLogin" value="Entrar"/><br/><br/>
+                        <a class="linksLogin" href="cadastro.php">Cadastre-se </a>
+                        <a class="linksLogin" href="esqueceuSenha.php">Esqueceu sua senha? </a>
                         </form>';
                 }            
 }
@@ -168,8 +171,8 @@ function VerificaSessao2(){
                             <label class="stringLogin">Senha: </label><input type="password" class="txtLogin" name="senha" placeholder="Senha"/> <br/><br/>
                             <input type="submit" name="submit" id="btnLogin" value="Entrar"/>
                             <div id="msglogin"></div><br/><br/>
-                            <a class="linksLogin" href="esqueceuSenha.php"> Esqueceu sua senha? </a>
-                            <a class="linksLogin" href="cadastro.php" >Cadastre-se</a>
+                            <a class="linksLogin" href="cadastro.php" > &nbsp; Cadastre-se</a>
+                            <a class="linksLogin" href="esqueceuSenha.php"> Esqueceu sua senha? </a>                            
                         </form>';
                 }            
 }
@@ -339,5 +342,12 @@ function verificaCOL_RES(){
                             <a class="linksLogin" href="cadastro.php" >Cadastre-se</a>
                         </form>';
                 }    
+}
+function verificaComment(){
+    $sql = "SELECT * FROM COMENTARIO WHERE ID_MATERIA = ";
+    echo '            <article id="comment" >
+                <figure class="autor_comment"> </figure>
+               <p class="comentario_materia"> </p>
+            </article>';
 }
 ?>

@@ -1,174 +1,276 @@
 *{
-    margin:0px 0px 0px 0px;
-    padding:0px 0px 0px 0px;
-}
-#container{
-    max-width: 1024px;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
 }
 
-#cabecalho {
+body{
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
+
+#container{
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    margin-left: 0;
+    float: left;
+}
+
+#cabecalho{
     width: 100%;
     height: 160px;
-    margin-top:0px;
-    margin-left:0px;
-}
-#logo{
-    width: 20%;
-    height: 144px;
-    float:left;
-    margin-top:0px;
-    margin-left:0px;
-}
-#menu{
-    width: 80%;
-    height: 32px;
-    float:left;
-    margin-top:0px;
-    margin-left:0px;
-}
-#conteudo{
-    width: 100%;
-    height: 600px;
-    float:left;
-    margin-top:32px;
-    margin-left:0px;
-    box-shadow: 2px 2px 5px black;
-    border:1px solid black;
-}
-#rodape{
-    width: 100%;
-    height: 180px;
-    background-color: blueviolet;
-    float:left;
-    margin-top:32px;
-    margin-left:0px;
-}
-#img-logo{
-    width: 76%;
-    height: 144px;
-    margin-top:0px;
-    margin-left:24px;
-}
-.menu{
-list-style:none; 
-border:1px solid #c0c0c0; 
-float:left; 
-width:100%;
-}
-.menu li{
-position:relative;
-float:left;
-border-right:1px solid #c0c0c0;
-width:16%;
-text-align: center;
-}
-.menu #homeinfo{
-position:relative;
-float:left;
-border-right:1px solid #c0c0c0;
-width:12%;
-text-align: center;
-}
- .menu #outras{
-position:relative;
-float:left;
-border-right:1px solid #c0c0c0;
-width:19.1945%;
-text-align: center;
-}
-.menu #xboxInfo{
-position:relative;
-float:left;
-border-right:1px solid #c0c0c0;
-width:12%;
-text-align: center;
-}
-.menu #pcinfo{
-position:relative;
-float:left;
-border-right:1px solid #c0c0c0;
-width:7.91%;
-text-align: center;
-}
-.menu li a{
-    color:#333; 
-    text-decoration:none; 
-    padding:5px 10px; 
-    display:block;
-}
-.menu li a:hover{
-background:#333;
-color:#fff;
--moz-box-shadow:0 3px 10px 0 #CCC;
--webkit-box-shadow:0 3px 10px 0 #ccc;
-text-shadow:0px 0px 5px #fff;
-}
-.menu li  ul{
-position:absolute;
-top:25px;
-left:0;
-background-color:#fff;
-display:none;
-margin-top:5px;
-}  
-.menu li:hover ul, .menu li.over ul{
-    display:block;
-}
-.menu li ul li{
-border:1px solid #c0c0c0;
-display:block;
-width:100%;
-}
-#login{
-    width: 30%;
-    height: 112px;
-    float:right;
-    margin-top:0px;
-    margin-left:0px;
-}
-#frmLogin{
-    width:80%;
-    height:120px;
-    float:left;
-    margin-top:10px;
-    margin-left:0px;
-    border-radius: 10px;
-}
-.stringLogin{
-    float:left;
-    font-family: initial;
-    font-size:14pt; 
-    line-height: 16pt;
-    margin-left:10px;
-    margin-top:10px;
-}
-.txtLogin{
-    float:right;
-    line-height: 13pt;
-    margin-right:10px;
-    margin-top:10px;
-    border-radius: 3px;
+    margin-top: 0;
+    margin-left: 0;
+    float: left;
 }
 
-#btnLogin{
+#nav{
+    width: 100%;
+    height: 40px;
+    margin-top: 0;
+    margin-left: 0;    
+    float: left;
+    position:fixed;
+    z-index: 3;    
+    box-shadow: 0 0 0 20px #333333;
+}
+
+#img-logo{
+    height: 110px;
+    width: 110px;
+    margin-top: 0px;    
+    margin-left: 20px;    
+    float: left;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 2px 2px 2px #333;
+}
+
+#logo{
+    height: 110px;
+    width: 110px;
+    margin-top: 0px;    
+    margin-left: 0px;    
+    float: left;    
+}
+
+#menu{
+    height:110px;
+    margin-top: 0px;    
+    margin-left: 30px;
+    float: left;
+}
+
+#menu, #menu ul, #menu ul li, #menu ul li a, #menu #menu-button{
+    padding: 0;
+    border: 0;  
+    display: block;  
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+    font-family: Century Gothic;
+    line-height: 1;
+}
+
+#menu #menu-button{
+    display: none;   
+}
+
+#menu-line{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    background: #333333;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
+#menu ul{ 
+    padding-top: 14px;
+}
+
+#menu ul li{  
+    float: left; 
+}
+
+#menu.align-right ul ul{
+    text-align: right;
+}
+
+#menu ul li a{    
+    padding: 0 20px 0 20px;
+    font-size: 12px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-transition: color .2s ease;
+    -moz-transition: color .2s ease;
+    -ms-transition: color .2s ease;
+    -o-transition: color .2s ease;
+    transition: color .2s ease;
+    padding-bottom: 2px;
+}
+
+#menu ul li a:hover{
+    color: lightgray;
+}
+
+#menu ul li.sub a{
+    padding-right: 25px;
+}
+
+#menu ul ul{ 
+    position: absolute;
+    left: 9999px;
+}
+
+#menu li:hover ul{ 
+    left: auto;
+}
+
+#menu ul ul li{       
+    -webkit-transition: height .2s ease;
+    -moz-transition: height .2s ease;
+    -ms-transition: height .2s ease;
+    -o-transition: height .2s ease;
+    transition: height .2s ease;
+}
+
+#menu ul ul li a{
+    width: 160px;
+    font-size: 12px;
+    background: #333333;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 10px 20px;    
+    -webkit-transition: color .2s ease;
+    -moz-transition: color .2s ease;
+    -ms-transition: color .2s ease;
+    -o-transition: color .2s ease;
+    transition: color .2s ease;
+}
+
+#menu ul li ul li{    
+    display: block;
+    position: relative;
+}
+ 
+#busca{ 
+    width: 250px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 20px;
+    float: right;
+}
+
+#busca #search input{  
+    height: 30px;
+    width: 60px;
+    float: right;
+    border: none;
+    color: #333333;              
+    -webkit-transition: all 0.7s ease 0s;     
+    -moz-transition: all 0.7s ease 0s;    
+    -o-transition: all 0.7s ease 0s;     
+    transition: all 0.7s ease 0s;    
+    border-radius: 15px 0 0 15px;
+}  
+
+#busca #search input:focus{
+    width: 220px;     
+} 
+
+#imagemBusca{
+    width: 30px;
+    height: 30px;    
+    margin-top: 0;
+    margin-left: 0;
+    float: right;
+    border-radius: 0 15px 15px 0;
+}
+
+#propaganda1{
+    width: 800px;
+    height: 100px;
+    margin-top: 60px;
+    margin-left: 250px;
+    float: left;
+}
+
+#logar{
+    width: 280px;
+    height: 130px;    
+    margin-top: 60px;
+    margin-right: 20px;
+    float: right;    
+    font-family: Century Gothic;
+    color: #ffffff;      
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 0 0 5px 5px;
+    background-color: #333333; 
+}
+
+#login a{
+    font-family: Century Gothic;
+    color: #ffffff;      
+    font-size: 12px;
+    line-height: 20px;
+    text-align: right;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+#login a{
+    margin-left:20px;
+}
+#login a:hover{
+    text-decoration: underline;
+}
+
+#login input{
+    width: 120px;
+    margin-right: 5px;
+    float: right;
+}
+.btnLogin{
     float:left;
-    width:30%;
-    margin-left:10px;
-    margin-top:10px;
-    color:#333;
-    border-radius: 4px;
-    background-color:silver;
-    cursor:pointer;
+    width:200px;
 }
-.linksLogin{
-    float:left;
-    margin-left:15px;
-    margin-top:-5px;
+.imgUsuario{
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;    
+    margin-right: 5px;
+    float: left;
+    background-color: #fff;
 }
-.linksLogin:hover{
-    color:blanchedalmond;
+
+#iconesSociais{
+    width: 40px;
+    height: 150px;
+    margin-top: 200px;
+    margin-right: 0;
+    float: right;
+    background-color: #333333;
 }
+
+
+#article{
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    margin-left: 0;
+    margin-bottom: 30px;
+    float: left;
+}
+
 .materias{
     width: 70%;
     height: 160px;
@@ -288,10 +390,10 @@ width:100%;
 }
 #msglogin{
     float:left;
-    margin-left:20px;
-    width:55%;
-    height:10px;
-    margin-top:10px;
+    margin-left:5px;
+    width:140px;
+    height:20px;
+    margin-top:2px;
 }
 .msgloginE{
     color:chartreuse;
@@ -325,17 +427,18 @@ width:100%;
     float:left;
 }
 .links_usuario{
-        margin-left:18px;
-    margin-top:10px;
+    margin-left:18px;
+    margin-top:30px;
     float:left;
 }
 .links_usuario a{
     font-size:12pt;
     font-family: century gothic;
     text-decoration: none;
+    color:white;
 }
 .links_usuario a:hover{
-color:bisque;
+color:#00989E;
 }
 #conteudo_materia{
     width: 100%;
@@ -395,6 +498,25 @@ color:bisque;
     margin-top:120px;
     margin-left:0px;
 }
+.autor_comment{
+    width:8%;
+    height:50px;
+    float:left;
+    margin-top:10px;
+    margin-left:20px;
+    border:1px solid black;
+}
+.comentario_materia{
+    width:70%;
+    height:50px;
+    border:1px solid black;
+    float:left;
+    margin-top:10px;
+    margin-left:20px;
+    font-size: 12pt;
+    font-style: normal;
+    text-align: justify;
+}
 .imagem_autor{
     width:20%;
     height:130px;
@@ -423,4 +545,112 @@ color:bisque;
 .testeUsers{
     margin-left:20px;
     margin-top:10px;
+}
+#tag_rec{
+    float:left;
+    margin-left:380px;
+    margin-top:40px;
+    font-size:16pt;
+    font-family: century gothic;
+}
+#tag_email_rec{
+    float:left;
+    margin-left:-240px;
+    margin-top:60px;
+    font-size:16pt;
+    font-family: century gothic;
+}
+#rec_email{
+    float:left;
+    margin-left:-150px;
+    margin-top:60px;
+    font-size:12pt;
+    font-family: century gothic;
+}
+#btnRec{
+    float:left;
+    margin-left:-170px;
+    margin-top:90px;
+    font-size:14pt;
+    font-family: century gothic;
+}
+.senha_rec{
+    float:left;
+    margin-left:380px;
+    margin-top:40px;
+    font-size:16pt;
+    font-family: century gothic;
+}
+#senha_rec{
+    float:left;
+    margin-left:-230px;
+    margin-top:80px;
+    font-size:16pt;
+    font-family: century gothic;
+}
+#senha_reculperada{
+    float:left;
+    margin-left:-20px;
+    margin-top:80px;
+    font-size:16pt;
+    font-weight: bold;
+    font-family: century gothic;
+}
+#conteudo{
+    width:100%;
+    height: 1000px;
+}
+
+#footer{
+    width: 100%;
+    height: 270px;
+    margin-top: 0;
+    margin-left: 0;
+    float: left;
+    background-color: #8e8e8e; 
+    text-align: center;
+    color: #005890;
+    font-family: century gothic;
+    font-size: 12pt; 
+}
+
+#footer h1{
+    font-family: century gothic;
+    font-size: 12pt;
+    color: #fff;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: #333;
+    line-height: 15pt;
+}
+
+#footer a{
+    text-decoration: none;
+    color: #fff;
+    font-family: century gothic;
+    font-size: 10pt;
+    line-height: 10pt;    
+    font-style: italic;
+}
+
+#footer a:hover{
+    text-decoration: underline;
+}
+
+#linksRodape{
+    width: 560px;
+    height: 270px;
+    margin-top: 0px;
+    margin-left: 27%;
+}
+
+.linksRodape{
+    width: 130px;
+    height: 240px;
+    margin-top: 15px;
+    margin-left: 5px;
+    float: left;
+    color: #fff;
+    line-height: 17pt;    
+    border: solid 2px #333;
 }

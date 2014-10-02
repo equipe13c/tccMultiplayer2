@@ -3,7 +3,7 @@
 
 $server = "localhost";
 $user = "root";
-$password = "12345678";
+$password = "";
 $database = "multiplayer4";
 
 $connection = mysql_connect($server,$user,$password);

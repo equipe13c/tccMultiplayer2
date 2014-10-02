@@ -34,11 +34,11 @@
             <article id="conteudo_materia">
                 <div id="materia_conteudo">
                     <header id="titulo_materia">
-                      <h3 class="texto_titulo">GTA V 5456465</h3>
+                      <h3 class="texto_titulo">ps4</h3>
                     </header>
                     <figure class="imagem_materia">
                 <?php
-                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%GTA V 5456465%'";
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%ps4%'";
                 $result = mysql_query($query);                
                 $imagens = mysql_num_rows($result);
                 if($imagens === 0){
@@ -53,7 +53,7 @@
                     </figure>
                     <p class="texto_materia2">
                 <?php
-                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%GTA V 5456465%'";
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%ps4%'";
                 $result = mysql_query($query);                
                 $imagens = mysql_num_rows($result);
                 if($imagens === 0){
@@ -67,7 +67,7 @@
                     </p>
                     <figure class="imagem_materia">   
                 <?php
-                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%GTA V 5456465%'";
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%ps4%'";
                 $result = mysql_query($query);                
                 $imagens = mysql_num_rows($result);
                 if($imagens === 0){
@@ -82,7 +82,7 @@
                     </figure>
                     <p class="texto_materia2">
                 <?php
-                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%GTA V 5456465%'";
+                $query = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%ps4%'";
                 $result = mysql_query($query);                
                 $imagens = mysql_num_rows($result);
                 if($imagens === 0){

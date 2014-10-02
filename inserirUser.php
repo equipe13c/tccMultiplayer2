@@ -48,7 +48,7 @@ if (isMail($email)){
                 $resultados = mysql_query($buscas);
                 $users2 = mysql_fetch_array($resultados);
                 echo $users2['ACAO_LOG'];
-                $mensagem = "$nome Realizou Cadastro";
+                $mensagem = "$apelido: Realizou Cadastro";
                 salvaLog($mensagem,$code,$email);
                 $codigo = mysql_query("SELECT COD_USUARIO FROM USUARIO WHERE EMAIL_USUARIO = '$email'");   
                 $resultCode = mysql_num_rows($codigo);

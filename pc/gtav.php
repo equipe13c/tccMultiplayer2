@@ -118,6 +118,7 @@
                     </footer>
                 </div>
             </article>
+
             <footer id="rodape">
                 <?php
                     include_once "../includes/rodape.php";
