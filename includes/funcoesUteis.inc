@@ -228,8 +228,8 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['senha'])){
             
         }
 }
-if($tipo == '1'){
-    
+if($tipoBanco == '1'){
+
 }
 else{
 if($tipoBanco == '2'){

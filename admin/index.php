@@ -11,7 +11,7 @@
             <?php             
              include '../includes/funcoesUteis.inc';
              include '../conexao/conecta.inc';
-             validaAutenticacao('','1');
+             validaAutenticacao('../index.php','1');
              verificaADM();
              ?>
              

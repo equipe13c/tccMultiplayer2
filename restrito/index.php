@@ -11,7 +11,7 @@
             <?php
             include '../includes/funcoesUteis.inc';
                 include '../conexao/conecta.inc';
-             validaAutenticacao('../index.php', '3');
+             validaAutenticacao('../index.php', '2');
             ?>
             <header id="cabecalho">
                 <figure id="logo">

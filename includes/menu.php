@@ -11,24 +11,10 @@
                                 </ul>
                             </li>
                             <li><a href='#'>PlayStation</a>
-                                <ul>                           
-                                    <li class='sub'><a href='#'>PlayStation 3</a></li>
-                                    <li class='sub'><a href='#'>PlayStation 4</a><li> 
-                                    <li class='sub'><a href='#'>PlayStation Vita</a></li>
-                                </ul>
                             </li>
                             <li><a href='#'>Nintendo</a>
-                                <ul>                               
-                                    <li class='sub'><a href='#'>Nintendo Wii</a></li>
-                                    <li class='sub'><a href='#'>Nintendo Wii U</a></li>
-                                    <li class='sub'><a href='#'>Nintendo 3DS</a></li>
-                                </ul>
                             </li>
                             <li><a href='#'>Xbox</a>
-                                <ul>
-                                    <li class='sub'><a href='#'>Xbox 360</a></li>
-                                    <li class='sub'><a href='#'>Xbox One</a></li> 
-                                </ul>
                             </li>
                             <li><a href='#'>PC</a></li>                                 
                         </ul> 

@@ -6,7 +6,7 @@
 body{
     width: 100%;
     height: auto;
-    background-color: #fff;
+    background-color:#d0d0d0;
 }
 
 #container{
@@ -165,7 +165,7 @@ body{
 #busca{ 
     width: 250px;
     height: 30px;
-    margin-top: 5px;
+    margin-top: 2px;
     margin-right: 20px;
     float: right;
 }
@@ -354,6 +354,7 @@ color:#00989E;
     float:left;
     margin-top:0px;
     margin-left:160px;
+    background-color: #fff;
 }
 #info_user{
     width: 30%;
@@ -369,9 +370,11 @@ color:#00989E;
     width:120px;
     height:120px;
     margin-top:10px;
-    margin-left:10px;
+    margin-left:0px;
     z-index: 1;
     position:absolute;
+    background-color:white;
+    border-radius: 60px;
 }
 #imagemUser{
     border-radius: 60px;
@@ -380,6 +383,7 @@ color:#00989E;
     height:120px; 
     z-index: 1;
     position:absolute;
+    z-index: 1;
 }
 #imagemUser:hover{
     opacity:0.9;
@@ -397,6 +401,21 @@ color:#00989E;
     color:#00989E;
     z-index: 0;
 }
+
+#imgCamera{
+    width:28px;
+    height:19px;
+    margin-left: 50px;
+    margin-top: 100px;
+    z-index: 2;
+    position:absolute;
+    opacity: 0.5;
+}
+
+#imgCamera:hover{
+ 
+}
+
 .username{
     margin-left:65px;
     margin-top:25px;
@@ -415,6 +434,24 @@ color:#00989E;
     height:20px;
     margin-top:5px;
 }
+#nomeImg{
+    width:35px;
+    height:40px;
+    margin-top:5px;
+}
+
+#dataImg{
+    width:35px;
+    height:30px;
+    margin-top:0px;
+}
+
+#cidadeImg{
+    width:35px;
+    height:30px;
+    margin-top:0px;
+}
+
 table.bordasimples {
     border-collapse: collapse;
     width:1000px; 

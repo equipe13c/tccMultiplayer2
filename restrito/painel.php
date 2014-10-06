@@ -68,7 +68,7 @@
                 <img src="../imagens/capateste1.jpg" alt="Imagem" id="imgCapasource">
             </figure>
             <article id="conteudo">
-                <div id="info_user">
+                <div id="info_user">    
                     <figure id="imgUser">
                         <?php
                             $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
@@ -84,6 +84,7 @@
                             $urlImagem = $imagens2['URL_IMAGEM'];
                             echo "<img src='../uploads/$urlImagem' id='imagemUser' alt='imagem'>";
                         ?>
+                        <img src="../imagens/camera.png" alt="camera" id="imgCamera">
                     </figure>
                     <div id="nomeUser">
                         <?php
@@ -109,25 +110,25 @@
                                 <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('email', '<?php echo $_SESSION['email']; ?>')" href="#">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
-                                <td class="icone"></td>
+                                <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>
                                 <td class="info">Nome completo</td>
                                 <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="nomeInfo"  value="<?php echo $_SESSION['nome']; ?>"></td>
                                 <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('nome')" href="#">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
-                                <td class="icone"></td>
+                                <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>
                                 <td class="info">Apelido</td>
                                 <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="apelidoInfo"  value="<?php echo $_SESSION['apelido']; ?>"></td>
                                 <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('apelido')" href="#">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
-                                <td class="icone"></td>
+                                <td class="icone"><img src="../imagens/data.png" alt="imgData" id="dataImg"></td>
                                 <td class="info">Data de nascimento</td>
                                 <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="dataInfo"  value="10/02/1996"></td>
                                 <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('data')" href="#">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
-                                <td class="icone"></td>
+                                <td class="icone"><img src="../imagens/cidade.png" alt="imgCidade" id="cidadeImg"></td>
                                 <td class="info">Cidade</td>
                                 <td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo"  value="Barueri"></td>
                                 <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('cidade')" href="#">Editar</a></td>                            
