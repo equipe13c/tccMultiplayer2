@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Multiplayer </title>
-        <meta http-equiv="Content-Type" charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script type="text/javascript" src="js/validacoes.js"> </script>
         <script type="text/javascript" src="js/funcoes.js"> </script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/cycle.js"></script>
+        <script type="text/javascript" src="js/javascript.js"></script>
+        <script type="text/javascript" src="js/validacoes.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $('#slide').before('<img id="controleGaleria">').cycle({
+                   fx: 'scrollHorz',
+                   pause: true,
+                   timeout: 6000,
+                   next: '#next',
+                   prev: '#prev'
+               }); 
+            });           
+            
+            onload = function(){
+                document.getElementById("nav").style.backgroundColor = "#00989E";
+                document.getElementById("search").style.backgroundColor = "#00989E";
+                document.getElementById("logar").style.borderBottom = "solid 5px #00989E";
+                var imgLogo = document.getElementById("img-logo");
+                imgLogo.innerHTML = '<img src="imagens/logo001.png" alt="LogoImagem" id="logo">';
+            };
+        </script>       
+        <title></title>
     </head>
     <body>
         <section id="container">
             <?php
+                include_once 'conexao/conecta.inc';
                 include_once 'includes/funcoesUteis.inc';
+                session_start();
             ?>
             <header id="cabecalho">
-                <figure id="logo">
-                    <a href="index.php"> <img src="imagens/logo001.png" alt="" id="img-logo"/>  </a>
-                </figure>
                 <?php
-                include_once 'includes/menu.php';
+                    include_once 'includes/menu.php';
                 ?>
-                <div id="login">
-                    <fieldset id="frmLogin">
-                        <?php
-                            VerificaSessao();
-                        ?>
-                    </fieldset>
+                <div id="logar">
+                    <?php
+                        VerificaSessao('');
+                    ?>                    
                 </div>
-                <?php
-                include_once 'includes/busca.php';
-                ?>
             </header>
             <article id="conteudo">
                 <div id="frmCadastro">
@@ -62,14 +78,14 @@
                                 atualizarCaptcha();
                                 </script>
                             </div>
-                            <a id="atualizarCaptcha"onclick="atualizarCaptcha();">Mudar Captcha</a>
+                            <a id="atualizarCaptcha" onclick="atualizarCaptcha();"> Mudar Captcha </a>
                             <input type="text" id="captchaPalavra"class="txts"  name="palavra" maxlength="6" onKeyPress="return letrasNumeros();"> <br/> <br/> <br/> <br/>
                             <input type="submit" id="btnCad" class="btnCads" name="cadastrar" value="Cadastrar"/>
                             <input type="reset" class="btnCads" name="limpar" value="Limpar"/>
                         </form>
                     </div>
             </article>
-            <footer id="rodape">
+            <footer id="footer">
                 <?php
                     include_once 'includes/rodape.php';
                 ?>

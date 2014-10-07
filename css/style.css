@@ -5,13 +5,11 @@
 
 body{
     width: 100%;
-    height: auto;
     background-color: #fff;
 }
 
 #container{
     width: 100%;
-    height: auto;
     margin-top: 0;
     margin-left: 0;
     float: left;
@@ -31,7 +29,7 @@ body{
     margin-top: 0;
     margin-left: 0;    
     float: left;
-    position:fixed;
+    position: fixed;
     z-index: 3;    
     box-shadow: 0 0 0 20px #333333;
 }
@@ -196,13 +194,6 @@ body{
     border-radius: 0 15px 15px 0;
 }
 
-#propaganda1{
-    width: 800px;
-    height: 100px;
-    margin-top: 60px;
-    margin-left: 250px;
-    float: left;
-}
 
 #logar{
     width: 280px;
@@ -262,14 +253,7 @@ body{
 }
 
 
-#article{
-    width: 100%;
-    height: auto;
-    margin-top: 50px;
-    margin-left: 0;
-    margin-bottom: 30px;
-    float: left;
-}
+
 
 .materias{
     width: 70%;
@@ -322,41 +306,45 @@ body{
 #frmCadastro{
     width: 50%;
     height: 320px;
-    float:left;
-    margin-top:50px;
-    margin-left:250px;
+    margin-top:  60px;
+    margin-left: 25%;
+    margin-bottom: 60px;
+    float: left;
+    border: solid #00989E 2px;
 }
-.vars{
-    font-family: cursive;
-    font-size:12pt;  
+.vars{    
+    margin-top: 6px;
+    margin-left: 50px;
+    font-family: century gothic;
+    font-size: 15pt;  
     line-height: 20pt;
-    margin-top:6px;
 }
 .txts{
-    float:right;
-    height:17px;
-    margin-top:4px;
-    border-radius:2px;
+    float: right;
+    height: 17px;
+    margin-top: 4px;
+    border-radius: 2px;
 }
 .validacoes{
-    width:30%;
-    margin-top:4px;
-    float:right;
-    height:20px;
+    width: 30%;
+    margin-top: 4px;
+    float: right;
+    height: 20px;
 }
 #captchaPalavra{
     margin-right:155px;
 }
 #captcha2{
-    float:left;
-    width:25%;
-    height:40px;
-    margin-top:20px;
+    height: 40px;
+    width: 25%;
+    margin-top: 20px;
+    margin-left: 50px;
+    float: left;
 }
 #captcha{
-    float:left;
-    width:100%;
-    height:40px;
+    float: left;
+    width: 100%;
+    height: 40px;
 }
 #atualizarCaptcha{
     float:left;
@@ -435,11 +423,28 @@ body{
     font-size:12pt;
     font-family: century gothic;
     text-decoration: none;
+    
     color:white;
 }
 .links_usuario a:hover{
 color:#00989E;
 }
+#conteudo{
+    width:100%;
+    float:left;
+    height:auto;
+}
+#publicidade{
+    width:800px;
+    height:100px;
+    margin-top:-65px;
+    margin-left: 200px;
+    float:left;
+    border:1px solid black;
+}
+#
+
+/*
 #conteudo_materia{
     width: 100%;
     height: 1440px;
@@ -541,7 +546,7 @@ color:#00989E;
     font-size: 12pt;
     font-style: normal;
     text-align: justify;
-}
+}*/
 .testeUsers{
     margin-left:20px;
     margin-top:10px;
@@ -595,10 +600,6 @@ color:#00989E;
     font-size:16pt;
     font-weight: bold;
     font-family: century gothic;
-}
-#conteudo{
-    width:100%;
-    height: 1000px;
 }
 
 #footer{

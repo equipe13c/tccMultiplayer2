@@ -179,7 +179,6 @@ function VerificaSessao2(){
 function validaAutenticacao($link, $tipo){
     
     echo '<meta charset=UTF-8>';
-session_start();
 
 
 if(!isset($_SESSION['email']) or !isset($_SESSION['senha'])){

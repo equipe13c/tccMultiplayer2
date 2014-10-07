@@ -1,5 +1,5 @@
                 <nav id="nav">
-                    <a href="#"> <div id="img-logo"><img src="imagens/logo001.png" alt="" id="logo"></div></a>
+                    <a href="index.php"> <div id="img-logo"></div></a>
                     <div id='menu'>
                         <ul>
                             <li><a href='#'>Colunas</a>
@@ -10,7 +10,7 @@
                                     <li class='sub'><a href='#'>Nostalgia</a></li>
                                 </ul>
                             </li>
-                            <li><a href='#'>PlayStation</a>
+                            <li><a href='playstation.php'>PlayStation</a>
                             </li>
                             <li><a href='#'>Nintendo</a>
                             </li>

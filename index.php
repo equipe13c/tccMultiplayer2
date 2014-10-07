@@ -7,6 +7,25 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/cycle.js"></script>
         <script type="text/javascript" src="js/javascript.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $('#slide').before('<img id="controleGaleria">').cycle({
+                   fx: 'scrollHorz',
+                   pause: true,
+                   timeout: 6000,
+                   next: '#next',
+                   prev: '#prev'
+               }); 
+            });           
+            
+            onload = function(){
+                document.getElementById("nav").style.backgroundColor = "#00989E";
+                document.getElementById("search").style.backgroundColor = "#00989E";
+                document.getElementById("logar").style.borderBottom = "solid 5px #00989E";
+                var imgLogo = document.getElementById("img-logo");
+                imgLogo.innerHTML = '<img src="imagens/logo001.png" alt="LogoImagem" id="logo">';
+            };
+        </script>       
         <title></title>
     </head>
     <body>
@@ -27,7 +46,11 @@
                 </div>
             </header>
             <article id="conteudo">
-                CONTEUDO NAO TEM CONFIGURAÇÃO NO CSS AINDA
+                <aside id="publicidade">                    
+                </aside>
+                <div id="slideshow">
+                    
+                </div>
             </article>
             <footer id="footer">
                 <?php
