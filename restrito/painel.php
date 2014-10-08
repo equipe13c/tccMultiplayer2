@@ -95,6 +95,18 @@
             confirm.focus();
             }
             } 
+            function mostrarCam(){
+            var mostrar = document.getElementById("imgCam");
+            mostrar.innerHTML = '<a onlick="mostrarLinks();" href="#"><img src="../imagens/camera.png" class="imgCamera" alt="imgCamera"></a>';
+            }
+            function retirarCam(){
+            var retirar = document.getElementById("imgCam");
+            retirar.innerHTML = '<img src="../imagens/fundoTransparente.png" class="imgCamera" alt="imgCamera">';
+            }
+            function mostrarLinks(){
+            var mostrar = document.getElementById("imgCam");
+            mostrar.innerHTML = '';    
+            }
         </script>
         <title></title>
     </head>
@@ -115,7 +127,7 @@
             </figure>
             <article id="conteudo">
                 <div id="info_user">    
-                    <figure id="imgUser">
+                    <figure id="imgUser" onmouseover="mostrarCam();" onmouseout="retirarCam();" >
                         <?php
                             $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
                             $result = mysql_query($query);                
@@ -130,7 +142,20 @@
                             $urlImagem = $imagens2['URL_IMAGEM'];
                             echo "<img src='../uploads/$urlImagem' id='imagemUser' alt='imagem'>";
                         ?>
-                        <img src="../imagens/camera.png" alt="camera" id="imgCamera">
+                        <figure id="imgCam" >                       
+                            
+                        </figure>
+                        <nav>
+                            <div id="menuImg">
+                        <ul>
+                            <li><a href='#'></a>
+                                <ul>
+                                    <li class='sub'><a href='#'>Remover</a></li>
+                                    <li class='sub'><a href='#'>Alterar imagem</a></li>
+                                </ul>
+                        </ul>
+                            </div>
+                        </nav>    
                     </figure>
                     <div id="nomeUser">
                         <?php
