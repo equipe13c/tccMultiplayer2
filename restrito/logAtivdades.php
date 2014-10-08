@@ -51,7 +51,6 @@
                     var salvar =  document.getElementById("salvarName");
                     salvar.innerHTML = '<input class="bsalvar" type="submit" value="Salvar" name="salvarNome">';
                 }
-                
                 if(valor === "apelido"){
                     document.getElementById(valor+"Info").disabled = false;
                     document.getElementById(valor+"Info").style.backgroundColor = "#FFF";
@@ -69,7 +68,6 @@
                     salvar.innerHTML = '<input class="bsalvar" type="submit" value="Salvar" name="salvarCidade">';
                 }
             }
-             
         </script>
          <script type="text/javascript">
             function validacaoEmail(field,idiv) { 
@@ -147,40 +145,61 @@
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                    <form action="update.php" method="post">
-                        <table id="tabelaPerfil" class="bordasimples">
+                <?php
+                    $sql = "SELECT * FROM LOG WHERE COD_AUTOR_LOG =".$_SESSION['code'];
+                    $total_reg = "5";
+                    $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
+                    $inicio = $pc - 1; 
+                    $inicio = $inicio * $total_reg;
+                    $limite = mysql_query("$sql LIMIT $inicio,$total_reg");
+                    $resultado = mysql_query($sql);
+                    $tr = mysql_num_rows($resultado);
+                    $tp = $tr / $total_reg;
+                    
+                    if($tr === 0){
+                        echo "Nenhuma Ação Encontrada";
+                    }
+                    else{
+                        echo '<table id="tabelaPerfil" class="bordasimples">
                             <tr class="linhasInfo">
-                                <td class="icone"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>
-                                <td class="info">Endereço de e-mail</td>
-                                <td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="emailInfo"   value="<?php echo $_SESSION['email']; ?>"></td>
-                                <td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('email', '<?php echo $_SESSION['email']; ?>')" href="#">Editar</a></td>                            
-                            </tr>
-                            <tr class="linhasInfo">
-                                <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>
-                                <td class="info">Nome completo</td>
-                                <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="nomeInfo" name="nomeUser"  value="<?php $sql = mysql_query("SELECT NOME_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); $result = mysql_fetch_array($sql); echo $result['NOME_USUARIO']; ?>"></td>
-                                <td class="edit" id="salvarName"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('nome')" href="#">Editar</a></td>                            
-                            </tr>
-                            <tr class="linhasInfo">
-                                <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>
-                                <td class="info">Apelido</td>
-                                <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="apelidoInfo" name="apelidoUser" value="<?php $sql = mysql_query("SELECT APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); $result = mysql_fetch_array($sql); echo $result['APELIDO_USUARIO']; ?>"></td>
-                                <td class="edit" id="salvarApel"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('apelido')" href="#">Editar</a></td>                            
-                            </tr>
-                            <tr class="linhasInfo">
-                                <td class="icone"><img src="../imagens/data.png" alt="imgData" id="dataImg"></td>
-                                <td class="info">Data de nascimento</td>
-                                <td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="dataInfo"  value="10/02/1996"></td>
-                                <td class="edit"></td>                            
-                            </tr>
-                            <tr class="linhasInfo">
-                                <td class="icone"><img src="../imagens/cidade.png" alt="imgCidade" id="cidadeImg"></td>
-                                <td class="info">Cidade</td>
-                                <td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo" name="cidadeUser" value="Barueri"></td>
-                                <td class="edit" id="salvarCid"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('cidade')" href="#">Editar</a></td>                            
-                            </tr>
-                        </table>
-                    </form>    
+                            <th> Data </th>
+                            <th> Hora</th>
+                            <th> Ação</th>
+                            </tr>';
+                        while ($acoes = mysql_fetch_array($limite))
+                        {
+                            echo '<tr class="linhasInfo">';
+                            echo '<td class="valores">'.$acoes['DATA_LOG'].'</td>';
+                            echo '<td class="valores">'.$acoes['HORA_LOG'].'</td>';
+                            $query2 = "SELECT NOME_ACAO FROM ACOES_LOG WHERE COD_ACOES_LOG =". $acoes['ACAO_LOG'];
+                            $result1 = mysql_query($query2);
+                            $acao = mysql_fetch_array($result1);
+                            echo '<td class="valores">'.$acao['NOME_ACAO'].'</td>';
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+                    $anterior = $pc -1; 
+                    $proximo = $pc +1; 
+                    if ($pc>1) 
+                    { echo " <a href='?pagina=$anterior'><- Anterior</a> "; 
+
+                    } 
+                    if($pc ==1){/*CODIGO A APARECER PARA VOLTAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
+                    //echo "|"; 
+                    // Inicio lógica rogerio
+                    for($i=1;$i<=$tp;$i++)
+                    {
+                        echo "<a href=?pagina=$i>".$i . "</a>" . "    ";
+                    }
+                    // Fim lógia rogério
+                    if ($pc<$tp) 
+                        { echo " <a href='?pagina=$proximo'>Próxima -></a>"; 
+
+                        }
+                   if($pc == $tp){/*CODIGO A APARECER PARA PASSAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
+
+                    }
+                ?>
                 </article>                
             </article>
             <footer id="footer">

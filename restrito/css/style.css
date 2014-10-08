@@ -332,7 +332,7 @@ body{
     color:white;
 }
 .links_usuario a:hover{
-color:#00989E;
+color: white;
 }
 #imgCapa{
     width: 100%;
@@ -476,7 +476,7 @@ table.bordasimples td.info{
 }
 
 table.editEmailTable td.info2{
-    width:400px;
+    width:300px;
     text-align: center;
     font-family: century gothic;
     font-size:14pt;
@@ -490,9 +490,34 @@ table.editEmailTable td.info2{
     font-size:14pt;
     font-weight: bold;
 }
-table.editEmailTable td.campos2{
-    width:350px;
+
+.bsalvar	{
+    border-color: #999 #000 #000 #999;
+    border: 1px solid;
+    width: 100px;
+    background: #333; 
+    color: white;
+    font-family: century gothic;
+    font-size: 11px;
     text-align: center;
+    text-decoration: none;
+    height:40px;
+    border-radius: 6px;
+}
+	 
+.bsalvar:hover	{
+   position: relative;
+   background: #333;
+   box-shadow: 2px 0px 5px #999;
+}
+
+table.editEmailTable td.campos2{
+    width:500px;
+    text-align: center;
+}
+table.editEmailTable td.valid{
+    text-align: center;
+    width:80px;
 }
 table.bordasimples td.campos{
     width:350px;
@@ -528,6 +553,7 @@ table.editEmailTable{
 table.editEmailTable tr td{
        height:60px;
 }
+
 table.editEmailTable tr#toplinha{
     border-top: 1px solid black;
 }
@@ -542,7 +568,10 @@ table.bordasimples tr td {
 }
 .linhasInfo:hover{
     background-color: #ccc;
-    opacity: 0.7;
+}
+.editImage{
+    width:20px;
+    height:20px;
 }
 .edit{
     text-align: center;
@@ -714,4 +743,14 @@ table.bordasimples tr td {
     color: #fff;
     line-height: 17pt;    
     border: solid 2px #333;
+}
+.designButton{
+    width:200px;
+    height:40px;
+    background-color:#333;
+    color:white;
+    font-size: 14pt;
+    font-family: century gothic;
+    border-radius: 3px;
+    
 }

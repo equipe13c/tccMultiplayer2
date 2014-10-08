@@ -10,7 +10,7 @@
                                     <li class='sub'><a href='#'>Nostalgia</a></li>
                                 </ul>
                             </li>
-                            <li><a href='#'>PlayStation</a>
+                            <li><a href='../Playstation.php'>PlayStation</a>
                             </li>
                             <li><a href='#'>Nintendo</a>
                             </li>

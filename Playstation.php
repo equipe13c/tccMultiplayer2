@@ -97,7 +97,7 @@
 
                         ?>
             </article>
-            <footer id="rodape">
+            <footer id="footer">
                 <?php
                     include_once 'includes/rodape.php';
                 ?>

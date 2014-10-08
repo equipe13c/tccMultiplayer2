@@ -115,7 +115,7 @@ function VerificaSessao2(){
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
-                    echo "<a href='../admin/index.php'>Painel </a><br/>";
+                    echo "<a  href='../admin/index.php'>Painel </a><br/>";
                     echo "<a href='../admin/sair.php'>Logout </a><br/>";
                   echo '</div>';
                 }
@@ -180,7 +180,7 @@ function validaAutenticacao($link, $tipo){
     
     echo '<meta charset=UTF-8>';
 
-
+    session_start();
 if(!isset($_SESSION['email']) or !isset($_SESSION['senha'])){
     if($tipo == '1'){
         
