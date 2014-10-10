@@ -54,7 +54,16 @@ body{
     margin-left: 0px;    
     float: left;    
 }
-
+#editImgFoto{
+    margin-top:2px;
+    margin-left: 3px;
+    width:10px;
+    height:14px;
+}
+.editImgFoto{
+    width:15px;
+    height:10px;
+}
 #menu{
     height:110px;
     margin-top: 0px;    
@@ -163,13 +172,14 @@ body{
 }
 
 #menuImg{
-    height:50px;
+    height:30px;
     width:150px;
-    margin-top: 100px;   
-    margin-left: 30px;
+    margin-top: 125px;   
+    margin-left: 50px;
     float: left;
     z-index: 10;
     opacity: 0.7;
+    position:absolute;
 }
 
 #menuImg, #menuImg ul, #menuImg ul li, #menuImg ul li a, #menuImg #menu-button{ 
@@ -180,11 +190,12 @@ body{
     z-index: 10;
     text-decoration: none;
     background-color: #333;
-    border-radius: 6px;
-    color: #fff;  
-
+    color: #fff;
+    border-radius: 5px;
 }
-
+#camera{
+    cursor: pointer;
+}
 #menuImg ul li a{    
     font-size: 13px;
     text-decoration: none;
@@ -195,14 +206,18 @@ body{
     -ms-transition: color .2s ease;
     -o-transition: color .2s ease;
     transition: color .2s ease;
-    padding-bottom: 2px;
-    margin: 0px 0px 0px 3px; 
+    margin-left:2px;
 }
 
 #menuImg ul li a:hover{
     color: #00989E;
-    background-color: lightgray;
-    border-radius: 2px;
+    -webkit-transition: height .2s;
+  -moz-transition: height .2s;
+  -ms-transition: height .2s;
+  -o-transition: height .2s;
+  transition: height .2s;
+  background-color: transparent;
+  border-radius: 5px;
 }
 
 #busca{ 
@@ -433,10 +448,10 @@ color: white;
 }
 #nomeUser{
     float:left;
-    width:210px;
+    width:220px;
     height:105px;
     margin-top:18px;
-    margin-left:90px;
+    margin-left:80px;
     background-color:#fff; 
     border-radius: 5px;
     font-family: century gothic;
@@ -800,4 +815,56 @@ table.bordasimples tr td {
     font-family: century gothic;
     border-radius: 3px;
     
+}
+table.tablealterarImg{
+    margin-left:210px;
+    margin-top:50px;
+}
+table.tablealterarImg td.icone{
+    width:300px;
+    text-align: center;
+    height:100px;
+}
+table.tablealterarImg td.info{
+    height:100px;
+    text-align: center;
+}
+#imagemInfo{
+    width:200px;
+    height:200px;
+}
+.senhaImg{
+    width:30px;
+    height:30px;
+}
+table.tablealterarCapa{
+    margin-left:20px;
+    margin-top:50px;
+}
+table.tablealterarCapa td.icone{
+    width:100px;
+    text-align: center;
+    height:100px;
+}
+table.tablealterarCapa td.info{
+    height:100px;
+    text-align: center;
+}
+#imagemCapa{
+    width:200px;
+    height:80px;
+}
+table.tablealterarCapa2{
+    margin-left:20px;
+    margin-top:50px;
+}
+table.tablealterarCapa2 td.icone{
+    width:100px;
+    text-align: center;
+    height:100px;
+}
+table.tablealterarCapa2 td.info{
+    width:200px;
+    height:100px;
+    text-align: center;
 }

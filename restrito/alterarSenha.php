@@ -16,7 +16,6 @@
             <?php
                 include_once '../conexao/conecta.inc';
                 include_once '../includes/funcoesUteis.inc';
-                include_once '../classes/Bcrypt.class.php';
             ?>
             <header id="cabecalho">
                 <?php
@@ -68,61 +67,31 @@
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                <?php
-                    $sql = "SELECT * FROM LOG WHERE COD_AUTOR_LOG =".$_SESSION['code'];
-                    $total_reg = "5";
-                    $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
-                    $inicio = $pc - 1; 
-                    $inicio = $inicio * $total_reg;
-                    $limite = mysql_query("$sql LIMIT $inicio,$total_reg");
-                    $resultado = mysql_query($sql);
-                    $tr = mysql_num_rows($resultado);
-                    $tp = $tr / $total_reg;
-                    
-                    if($tr === 0){
-                        echo "Nenhuma Ação Encontrada";
-                    }
-                    else{
-                        echo '<table id="tabelaPerfil" class="bordasimples">
+                    <form action="update.php" method="post" name="formCad">
+                        <table id="tabelaPerfil" class="editEmailTable">
+                            <tr class="linhasInfo" id="toplinha">
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Senha Atual</td>
+                                <td class="campos2"><input type="password" name="senhaAtual"  class="txtInfo2" id="senhaInfo" ></td>
+                                <td class="valid"></td>
+                            </tr>
                             <tr class="linhasInfo">
-                            <th> Data </th>
-                            <th> Hora</th>
-                            <th> Ação</th>
-                            </tr>';
-                        while ($acoes = mysql_fetch_array($limite))
-                        {
-                            echo '<tr class="linhasInfo">';
-                            echo '<td class="valores">'.$acoes['DATA_LOG'].'</td>';
-                            echo '<td class="valores">'.$acoes['HORA_LOG'].'</td>';
-                            $query2 = "SELECT NOME_ACAO FROM ACOES_LOG WHERE COD_ACOES_LOG =". $acoes['ACAO_LOG'];
-                            $result1 = mysql_query($query2);
-                            $acao = mysql_fetch_array($result1);
-                            echo '<td class="valores">'.$acao['NOME_ACAO'].'</td>';
-                            echo '</tr>';
-                        }
-                        echo '</table>';
-                    $anterior = $pc -1; 
-                    $proximo = $pc +1; 
-                    if ($pc>1) 
-                    { echo " <a href='?pagina=$anterior'><- Anterior</a> "; 
-
-                    } 
-                    if($pc ==1){/*CODIGO A APARECER PARA VOLTAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
-                    //echo "|"; 
-                    // Inicio lógica rogerio
-                    for($i=1;$i<=$tp;$i++)
-                    {
-                        echo "<a href=?pagina=$i>".$i . "</a>" . "    ";
-                    }
-                    // Fim lógia rogério
-                    if ($pc<$tp) 
-                        { echo " <a href='?pagina=$proximo'>Próxima -></a>"; 
-
-                        }
-                   if($pc == $tp){/*CODIGO A APARECER PARA PASSAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
-
-                    }
-                ?>
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Novo Senha</td>
+                                <td class="campos2"><input type="password" name="senhaUser" class="txtInfo2" id="senhaInfo1" onblur="validaSenha();"></td>
+                                <td class="valid" id="valid1"></td>
+                            <tr class="linhasInfo">
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Confirmar Senha</td>
+                                <td class="campos2"><input type="password" name="confirmesenhaUser" class="txtInfo2" id="senhaInfo2" onblur="validaSenha();"></td>
+                                <td class="valid" id="valid2"> </td>
+                            </tr>
+                            <tr class="linhasInfo" id="bottomlinha">
+                                <td class="salvarEdit" colspan="2"><input type="submit" value="Salvar Alterações" name="salvarSenha" class="designButton"></td>
+                                    <td class="salvarEdit" colspan="2"><input type="submit" value="Retornar" name="Retornar" class="designButton"></td>
+                            </tr>
+                        </table>
+                    </form>  
                 </article>                
             </article>
             <footer id="footer">

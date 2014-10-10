@@ -8,100 +8,15 @@
         <script type="text/javascript" src="../js/cycle.js"></script>
         <script type="text/javascript" src="../js/javascript.js"></script>
         <script type="text/javascript" src="../js/menu2.js"></script>
-        <script type="text/javascript"> 
-            function alterarDados(){
-                var alterar = document.getElementById("conteudo_infos");
-                alterar.innerHTML = "";
-            }
-
-            function edit(valor,valor2){
-                if(valor === "email"){
-                    var email = document.getElementById("conteudo_infos");
-                    email.innerHTML = '<form action="update.php" method="post" name="formCad">'
-                            +'<table id="tabelaPerfil" class="editEmailTable">'
-                        +'<tr class="linhasInfo" id="toplinha">'
-                            +'<td class="icone2"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>'
-                            +'<td class="info2">E-mail Atual</td>'
-                            +'<td class="campos2"><input type="text" disabled="disabled" name="email_usuario"  class="txtInfo2" id="emailInfo"  value="'+valor2+'"></td>'
-                            +'<td class="valid"></td>'
-                        +'</tr>'
-                        +'<tr class="linhasInfo">'
-                            +'<td class="icone2"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>'
-                            +'<td class="info2">Novo e-mail</td>'
-                            +'<td class="campos2"><input type="text" name="confirmemail_usuario" class="txtInfo2" id="emailInfo1" onblur="validacaoEmail(formCad.confirmemail_usuario,'+"'"+ 'valid1 '+"'"+');"   value="'+valor2+'"></td>'
-                            +'<td class="valid" id="valid1"></td>'
-                        +'<tr class="linhasInfo">'
-                            +'<td class="icone2"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>'
-                            +'<td class="info2">Confirmar e-mail</td>'
-                            +'<td class="campos2"><input type="text" name="confirmemail_usuario2" class="txtInfo2" id="emailInfo2" onblur="validacaoEmail(formCad.confirmemail_usuario2, '+"'"+ 'valid2 '+"'"+');"  value="'+valor2+'"></td>'
-                            +'<td class="valid" id="valid2"> </td>'
-                        +'</tr>'
-                        +'<tr class="linhasInfo" id="bottomlinha">'
-                            +'<td class="salvarEdit" colspan="2"><input type="submit" value="Salvar Alterações" name="salvarDados" class="designButton"></td>'
-                            +'<td class="salvarEdit" colspan="2"><input type="submit" value="Retornar" name="Retornar" class="designButton"></td>'
-                        +'</tr>'
-                    +'</table>'
-                    +'</form>';
-                }
-                if(valor === "nome"){
-                    document.getElementById(valor+"Info").disabled = false;
-                    document.getElementById(valor+"Info").style.backgroundColor = "#FFF";
-                    document.getElementById(valor+"Info").style.color = "#000";
-                    document.getElementById(valor+"Info").focus();
-                    var salvar =  document.getElementById("salvarCampo");
-                    salvar.innerHTML = '<input class="bsalvar" type="submit" value="Salvar" name="salvarNome">';
-                }
-                if(valor === "apelido"){
-                    document.getElementById(valor+"Info").disabled = false;
-                    document.getElementById(valor+"Info").style.backgroundColor = "#FFF";
-                    document.getElementById(valor+"Info").style.color = "#000";
-                    document.getElementById(valor+"Info").focus();
-                    var salvar =  document.getElementById("salvarCampo");
-                    salvar.innerHTML = '<input class="bsalvar" type="submit" value="Salvar" name="salvarApelido">';
-                }
-                if(valor === "cidade"){
-                    document.getElementById(valor+"Info").disabled = false;
-                    document.getElementById(valor+"Info").style.backgroundColor = "#FFF";
-                    document.getElementById(valor+"Info").style.color = "#000";
-                    document.getElementById(valor+"Info").focus();
-                    var salvar =  document.getElementById("salvarCampo");
-                    salvar.innerHTML = '<input class="bsalvar" type="submit" value="Salvar" name="salvarCidade">';
-                }
-            }
-             </script>
-         <script type="text/javascript">
-            function validacaoEmail(field,idiv) { 
-            var email = document.getElementById('emailInfo1').value;
-            var confirm = document.getElementById('emailInfo2').value;
-
-            if(email == confirm){
-            usuario = field.value.substring(0, field.value.indexOf("@")); 
-            dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length); 
-            if ((usuario.length >=1) && (dominio.length >=3) && (usuario.search("@")==-1) && (dominio.search("@")==-1) && (usuario.search(" ")==-1) && (dominio.search(" ")==-1) && (dominio.search(".")!=-1) && (dominio.indexOf(".") >=1)&& (dominio.lastIndexOf(".") < dominio.length - 1)) 
-            { 
-            document.getElementById('valid1').innerHTML='<img src="../imagens/ico_valid.gif" alt="imgValid" class="validacaoOK">';
-            document.getElementById('valid2').innerHTML='<img src="../imagens/ico_valid.gif" alt="imgValid" class="validacaoOK">';
-            }
-            else{ 
-            document.getElementById('valid1').innerHTML='<img src="../imagens/ico_unvalid.gif" alt="imgValid" class="validacaoOK">';
-            document.getElementById('valid2').innerHTML='<img src="../imagens/ico_unvalid.gif" alt="imgValid" class="validacaoOK">';
-            } 
-            }
-            else{
-            document.getElementById('valid1').innerHTML='<img src="../imagens/ico_unvalid.gif" alt="imgValid" class="validacaoOK">';
-            document.getElementById('valid2').innerHTML='<img src="../imagens/ico_unvalid.gif" alt="imgValid" class="validacaoOK">';
-            confirm.focus();
-            }
-            } 
-        </script>
+        <script type="text/javascript" src="../js/restrito.js"></script>
         <title></title>
     </head>
-    <body>
-        <section id="container">
+    <body >
+        <section id="container" >
             <?php
                 include_once '../conexao/conecta.inc';
                 include_once '../includes/funcoesUteis.inc';
-                
+                include_once '../classes/Bcrypt.class.php';
             ?>
             <header id="cabecalho">
                 <?php
@@ -110,11 +25,13 @@
                 ?>
             </header>
             <figure id="imgCapa">
-                <img src="../imagens/capateste1.jpg" alt="Imagem" id="imgCapasource">
+                <?php
+                buscarDados('imgcapa');
+                ?>
             </figure>
             <article id="conteudo">
                 <div id="info_user">    
-                    <figure id="imgUser">
+                    <figure id="imgUser" onmouseover="mostrarCam();" onmouseout="retirarCam();" >
                         <?php
                             $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
                             $result = mysql_query($query);                
@@ -129,7 +46,12 @@
                             $urlImagem = $imagens2['URL_IMAGEM'];
                             echo "<img src='../uploads/$urlImagem' id='imagemUser' alt='imagem'>";
                         ?>
-                        <img src="../imagens/camera.png" alt="camera" id="imgCamera">
+                        <figure id="imgCam" >                       
+                            <a onmousedown="mostrarLinks();"  id="camera"></a>
+                        </figure>
+                        <nav id="menuImagem" >
+
+                        </nav>    
                     </figure>
                     <div id="nomeUser">
                         <?php
@@ -145,7 +67,7 @@
                         include '../includes/menuR2.php';
                     ?>
                 </nav>
-                <article id="conteudo_infos">
+                <article id="conteudo_infos" >
                     <?php
                             function salvaLog($mensagem,$acao) {
                             $ip = $_SERVER['REMOTE_ADDR']; // Salva o IP do visitante
@@ -155,7 +77,42 @@
                             VALUES('$ip','$dia', '$hora', '$mensagem', $acao,'".$_SESSION['email']."',".$_SESSION['code'].")";
                             mysql_query($sql);
                             }
-                    switch (get_post_action('salvarDados','Retornar','salvarNome','salvarApelido','salvarCidade')) {
+                    switch (get_post_action('salvarDados','Retornar','salvarNome','salvarApelido','salvarEstado','salvarSenha')) {
+                    case 'salvarSenha':   
+                    //Inicio
+                        $senhaAtual = $_POST['senhaAtual'];
+                        $senha = $_POST['senhaUser'];
+                        $confirmSenha = $_POST['confirmesenhaUser'];
+                        $sql = "SELECT * FROM USUARIO WHERE COD_USUARIO =".$_SESSION['code'];
+                        if($resultado = mysql_query($sql)){
+                            $result = mysql_fetch_array($resultado);
+                            $senhaBanco = $result['SENHA_USUARIO'];
+                            if (Bcrypt::check($senhaAtual, $senhaBanco)) {
+                                if($senha == $confirmSenha){
+                                    $pass = Bcrypt::hash($senha);
+                                    $query = "UPDATE USUARIO SET SENHA_USUARIO = '$pass' WHERE COD_USUARIO =".$_SESSION['code'];
+                                    if(mysql_query($query)){
+                                         echo "<script> location.href='../index.php' </script>";
+                                         echo "<script> alert('Senha alterada, por favor logue-se novamente!'); </script>";
+                                         session_destroy();
+                                    }
+                                    else{
+                                        echo 'erro ao alterar senha';
+                                    }
+                                }
+                                else{
+                                    echo "senhas nao correspondem";
+                                }                                
+                            }
+                            else{
+                                echo "Senha Atual Incorreta!";
+                            }
+                        }
+                        else{
+                            
+                        }
+                    //Fim
+                    break;
                     case 'salvarNome':
                     //Inicio    
                         $nome = $_POST['nomeUser'];
@@ -172,7 +129,7 @@
                             else{
                                 $sql2 = "UPDATE USUARIO SET NOME_USUARIO = '$nome' WHERE COD_USUARIO =" . $_SESSION['code'];
                                 if(mysql_query($sql2)){
-                                    echo "Nome Alterado<br/>";
+                                    echo "<script> location.href='painel.php' </script>";
                                     $apelido = $usuarioEmail['APELIDO_USUARIO'];
                                     $mensagem = "$apelido Alterou Nome";
                                     $acao = 8;
@@ -202,7 +159,7 @@
                             else{
                                 $sql2 = "UPDATE USUARIO SET APELIDO_USUARIO = '$apelido1' WHERE COD_USUARIO =" . $_SESSION['code'];
                                 if(mysql_query($sql2)){
-                                    echo "Apelido Alterado<br/>";
+                                    echo "<script> location.href='painel.php' </script>";
                                     $apelido = $usuarioEmail['APELIDO_USUARIO'];
                                     $mensagem = "$apelido Alterou Apelido";
                                     $acao = 12;
@@ -214,11 +171,6 @@
                                 }
                             }
                         }
-                    //Fim    
-                    break;
-                    case 'salvarCidade':
-                    //Inicio    
-                        
                     //Fim    
                     break;
                     case 'salvarDados':
@@ -243,12 +195,13 @@
                             else{
                                 $sql2 = "UPDATE USUARIO SET EMAIL_USUARIO = '$email' WHERE COD_USUARIO =" . $_SESSION['code'];
                                 if(mysql_query($sql2)){
-                                    echo "E-mail Alterado<br/>";
+                                    echo "<script> location.href='../index.php' </script>";
+                                    echo "<script> alert('E-mail alterado, por favor logue-se novamente!'); </script>";
                                     $apelido = $usuarioEmail['APELIDO_USUARIO'];
                                     $mensagem = "$apelido Alterou E-mail";
                                     $acao = 7;
                                     salvaLog($mensagem,$acao);
-                                    
+                                    session_destroy();
                                 }
                                 else{
                                     echo "erro ao alterar E-mail";
@@ -306,7 +259,33 @@
                                     
                         //Fim
                         break;
+                    case 'salvarEstado':
+                    //Inicio
+                        $estado = $_POST['estadoUser'];
+                        $sql = "SELECT ESTADO_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =".$_SESSION['code'];
+                        $result = mysql_query($sql);
+                        $totalbusca = mysql_num_rows($result);
+                        $usuarioEmail = mysql_fetch_array($result);
+                        if($totalbusca === 0){                           
+                        }
+                        else{
+                                $sql2 = "UPDATE USUARIO SET ESTADO_USUARIO = '$estado' WHERE COD_USUARIO =" . $_SESSION['code'];
+                                if(mysql_query($sql2)){
+                                    echo "<script> location.href='painel.php' </script>";
+                                    $apelido = $usuarioEmail['APELIDO_USUARIO'];
+                                    $mensagem = "$apelido Alterou Estado";
+                                    $acao = 8;
+                                    salvaLog($mensagem,$acao);
+                                    
+                                }
+                                else{
+                                    echo "erro ao alterar Nome";
+                                }
+                            }
+                    //Fim
+                    break;
                     default:
+                        echo "Nenhuma Função Pré definida";
                        
                     }   
                     ?>

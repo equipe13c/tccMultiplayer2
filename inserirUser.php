@@ -57,9 +57,10 @@ if (isMail($email)){
                 else{
                 $codigos = mysql_fetch_array($codigo); 
                 $codUsuario = $codigos['COD_USUARIO'];                
-                $nome = "default.jpg";            
-                mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM, COD_IMAGEM_USUARIO)
-                VALUES('$nome',$codUsuario)");
+                $nome = "default.jpg";
+                $imgCapa = "defaultCapa.jpg";
+                mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM, COD_IMAGEM_USUARIO, URL_IMAGEM_CAPA)
+                VALUES('$nome',$codUsuario, '$imgCapa')");
                 }
         }
         else{

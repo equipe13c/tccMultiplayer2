@@ -349,4 +349,46 @@ function verificaComment(){
                <p class="comentario_materia"> </p>
             </article>';
 }
+function buscarDados($string){
+    if($string == "nome"){
+        $sql = mysql_query("SELECT NOME_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+        $result = mysql_fetch_array($sql); 
+        echo $result['NOME_USUARIO'];
+    }
+    if($string == "apelido"){
+         $sql = mysql_query("SELECT APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+         $result = mysql_fetch_array($sql); 
+         echo $result['APELIDO_USUARIO']; 
+    }
+    if($string == "data"){
+        $sql = mysql_query("SELECT DATA_NASCIMENTO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+        $result = mysql_fetch_array($sql);  
+        $data = $result['DATA_NASCIMENTO']; 
+        $ano = substr($data, 0, 4);
+        $mes = substr($data, 5, 2);
+        $dia = substr($data, 8, 2);
+         echo "$dia / $mes / $ano";
+    }
+    if($string == "estado"){
+        $sql = mysql_query("SELECT ESTADO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+        $result = mysql_fetch_array($sql);  
+        echo $data = $result['ESTADO_USUARIO'];
+    }
+    if($string == "imgcapa"){
+        $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
+        $result = mysql_query($query);                
+        $imagens = mysql_num_rows($result);
+        if($imagens === 0){
+        $nome = "defaultCapa.jpg";            
+        mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
+        VALUES('$nome'".$_SESSION['code'].")");
+        }
+        else{
+        $imagens2 = mysql_fetch_array($result); 
+        $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
+        echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imgCapasource'>";
+        }
+    
+    }
+}
 ?>

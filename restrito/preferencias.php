@@ -16,7 +16,6 @@
             <?php
                 include_once '../conexao/conecta.inc';
                 include_once '../includes/funcoesUteis.inc';
-                include_once '../classes/Bcrypt.class.php';
             ?>
             <header id="cabecalho">
                 <?php
@@ -68,61 +67,38 @@
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                <?php
-                    $sql = "SELECT * FROM LOG WHERE COD_AUTOR_LOG =".$_SESSION['code'];
-                    $total_reg = "5";
-                    $pc= isset($_GET['pagina'])? $_GET['pagina'] : "1";
-                    $inicio = $pc - 1; 
-                    $inicio = $inicio * $total_reg;
-                    $limite = mysql_query("$sql LIMIT $inicio,$total_reg");
-                    $resultado = mysql_query($sql);
-                    $tr = mysql_num_rows($resultado);
-                    $tp = $tr / $total_reg;
-                    
-                    if($tr === 0){
-                        echo "Nenhuma Ação Encontrada";
-                    }
-                    else{
-                        echo '<table id="tabelaPerfil" class="bordasimples">
-                            <tr class="linhasInfo">
-                            <th> Data </th>
-                            <th> Hora</th>
-                            <th> Ação</th>
-                            </tr>';
-                        while ($acoes = mysql_fetch_array($limite))
-                        {
-                            echo '<tr class="linhasInfo">';
-                            echo '<td class="valores">'.$acoes['DATA_LOG'].'</td>';
-                            echo '<td class="valores">'.$acoes['HORA_LOG'].'</td>';
-                            $query2 = "SELECT NOME_ACAO FROM ACOES_LOG WHERE COD_ACOES_LOG =". $acoes['ACAO_LOG'];
-                            $result1 = mysql_query($query2);
-                            $acao = mysql_fetch_array($result1);
-                            echo '<td class="valores">'.$acao['NOME_ACAO'].'</td>';
-                            echo '</tr>';
-                        }
-                        echo '</table>';
-                    $anterior = $pc -1; 
-                    $proximo = $pc +1; 
-                    if ($pc>1) 
-                    { echo " <a href='?pagina=$anterior'><- Anterior</a> "; 
-
-                    } 
-                    if($pc ==1){/*CODIGO A APARECER PARA VOLTAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
-                    //echo "|"; 
-                    // Inicio lógica rogerio
-                    for($i=1;$i<=$tp;$i++)
-                    {
-                        echo "<a href=?pagina=$i>".$i . "</a>" . "    ";
-                    }
-                    // Fim lógia rogério
-                    if ($pc<$tp) 
-                        { echo " <a href='?pagina=$proximo'>Próxima -></a>"; 
-
-                        }
-                   if($pc == $tp){/*CODIGO A APARECER PARA PASSAR PAGINA*/} // Mostrando desabilitado 06/11/13 Rogério
-
-                    }
-                ?>
+                    <form action="script2.php" method="post" enctype="multipart/form-data">
+                        <table id="tabelaPerfil" class="tablealterarCapa2">
+                            <tr>
+                                <td class="icone"><img src="../imagens/contacts.png" alt="imgNome" id=""> Imagem Capa</td>
+                                <td class="info">                     
+                            <?php
+                                $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
+                                $result = mysql_query($query);                
+                                $imagens = mysql_num_rows($result);
+                                if($imagens === 0){
+                                $nome = "defaultCapa.jpg";            
+                                mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
+                                VALUES('$nome'".$_SESSION['code'].")");
+                                }
+                                else{
+                                $imagens2 = mysql_fetch_array($result); 
+                                $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
+                                echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imagemCapa'>";
+                                }
+                            ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgNome" id=""></td>
+                                <td class="info"><input type="file" name="arquivo" value="Alterar Imagem"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/checkmark.png" alt="imgNome" id=""></td>
+                                <td class="info"><input type="submit" name="alterarImg" class="bsalvar" value="Alterar Foto"></td>
+                            </tr>
+                        </table>
+                    </form>    
                 </article>                
             </article>
             <footer id="footer">

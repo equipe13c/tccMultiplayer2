@@ -1,0 +1,10 @@
+<?php
+include '../includes/funcoesUteis.inc';
+validaAutenticacao('../index.php', '2');
+$sql = "UPDATE IMAGEM_USUARIO SET URL_IMAGEM = 'default.jpg' WHERE COD_IMAGEM_USUARIO =".$_SESSION['code'];
+if(mysql_query($sql)){
+    echo "<script> location.href='painel.php' </script>";
+}
+else{
+    echo "erro ao remover a imagem";
+}
