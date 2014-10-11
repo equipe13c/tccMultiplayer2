@@ -20,7 +20,7 @@
             <header id="cabecalho">
                 <?php
                 include_once '../includes/menuR.php';
-                validaAutenticacao('../index.php','2');
+                validaAutenticacao('../index.php','3');
                 ?>
             </header>
             <figure id="imgCapa">
@@ -64,7 +64,7 @@
                 </div>
                 <nav id="menu2">
                     <?php 
-                        include '../includes/menuR2.php';
+                        include '../includes/menuC.php';
                     ?>
                 </nav>
                 <article id="conteudo_infos">
@@ -80,7 +80,7 @@
                                 <td class="icone"><img src="../imagens/lock.png" alt="imgCidade" id="senhaImg"></td>
                                 <td class="info">Senha</td>
                                 <td class="campos"><input type="password" class="txtInfo" disabled="disabled" id="senhaInfo" name="senhaUser" value="default"></td>
-                                <td class="edit" id="salvarSenha"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>                            
+                                <td class="edit" id="salvarCid"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
                                 <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>
@@ -104,7 +104,7 @@
                                 <td class="icone"><img src="../imagens/cidade.png" alt="imgCidade" id="cidadeImg"></td>
                                 <td class="info">Estado</td>
                                 <td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo" name="estadoUser" value="<?php buscarDados('estado'); ?>"></td>
-                                <td class="edit" id="salvarCid"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('estado')" href="#">Editar</a></td>                            
+                                <td class="edit" id="salvarCid"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('cidade')" href="#">Editar</a></td>                            
                             </tr>
                         </table>
                     </form>    

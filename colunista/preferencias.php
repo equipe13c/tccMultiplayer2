@@ -20,7 +20,7 @@
             <header id="cabecalho">
                 <?php
                 include_once '../includes/menuR.php';
-                validaAutenticacao('../index.php','2');
+                validaAutenticacao('../index.php','3');
                 ?>
             </header>
             <figure id="imgCapa">
@@ -63,7 +63,7 @@
                 </div>
                 <nav id="menu2">
                     <?php 
-                        include '../includes/menuR2.php';
+                        include '../includes/menuC.php';
                     ?>
                 </nav>
                 <article id="conteudo_infos">

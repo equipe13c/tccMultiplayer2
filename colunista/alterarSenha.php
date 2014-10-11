@@ -20,7 +20,7 @@
             <header id="cabecalho">
                 <?php
                 include_once '../includes/menuR.php';
-                validaAutenticacao('../index.php','2');
+                validaAutenticacao('../index.php','3');
                 ?>
             </header>
             <figure id="imgCapa">
@@ -63,45 +63,35 @@
                 </div>
                 <nav id="menu2">
                     <?php 
-                        include '../includes/menuR2.php';
+                        include '../includes/menuC.php';
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                    <form action="script2.php" method="post" enctype="multipart/form-data">
-                        <table id="tabelaPerfil" class="tablealterarCapa2">
-                            <tr>
-                                <th id="alterar" colspan="3">Alterar Foto de Capa</th>
+                    <form action="update.php" method="post" name="formCad">
+                        <table id="tabelaPerfil" class="editEmailTable">
+                            <tr class="linhasInfo" id="toplinha">
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Senha Atual</td>
+                                <td class="campos2"><input type="password" name="senhaAtual"  class="txtInfo2" id="senhaInfo" ></td>
+                                <td class="valid"></td>
                             </tr>
-                            <tr>
-                                <td class="icone"><img src="../imagens/contacts.png" alt="imgNome" id=""> Imagem Capa</td>
-                                <td class="info">                     
-                            <?php
-                                $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
-                                $result = mysql_query($query);                
-                                $imagens = mysql_num_rows($result);
-                                if($imagens === 0){
-                                $nome = "defaultCapa.jpg";            
-                                mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
-                                VALUES('$nome'".$_SESSION['code'].")");
-                                }
-                                else{
-                                $imagens2 = mysql_fetch_array($result); 
-                                $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
-                                echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imagemCapa'>";
-                                }
-                            ?>
-                                </td>
+                            <tr class="linhasInfo">
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Novo Senha</td>
+                                <td class="campos2"><input type="password" name="senhaUser" class="txtInfo2" id="senhaInfo1" onblur="validaSenha();"></td>
+                                <td class="valid" id="valid1"></td>
+                            <tr class="linhasInfo">
+                                <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
+                                <td class="info2">Confirmar Senha</td>
+                                <td class="campos2"><input type="password" name="confirmesenhaUser" class="txtInfo2" id="senhaInfo2" onblur="validaSenha();"></td>
+                                <td class="valid" id="valid2"> </td>
                             </tr>
-                            <tr>
-                                <td class="icone"><img src="../imagens/picture.png" alt="imgNome" id=""></td>
-                                <td class="info"><input type="file" name="arquivo" value="Alterar Imagem"></td>
-                            </tr>
-                            <tr>
-                                <td class="icone"><img src="../imagens/checkmark.png" alt="imgNome" id=""></td>
-                                <td class="info"><input type="submit" name="alterarImg" class="bsalvar" value="Alterar Foto"></td>
+                            <tr class="linhasInfo" id="bottomlinha">
+                                <td class="salvarEdit" colspan="2"><input type="submit" value="Salvar Alterações" name="salvarSenha" class="designButton"></td>
+                                    <td class="salvarEdit" colspan="2"><input type="submit" value="Retornar" name="Retornar" class="designButton"></td>
                             </tr>
                         </table>
-                    </form>    
+                    </form>  
                 </article>                
             </article>
             <footer id="footer">

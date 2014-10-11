@@ -21,7 +21,9 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -43,7 +45,9 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -65,7 +69,9 @@ function VerificaSessao(){
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
                 echo "<img src='uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';

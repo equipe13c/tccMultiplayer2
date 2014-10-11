@@ -514,6 +514,12 @@ color: white;
     margin-top:0px;
 }
 
+#senhaImg{
+    width:35px;
+    height:30px;
+    margin-top:0px;
+}
+
 table.bordasimples {
     border-collapse: collapse;
     width:1000px; 
@@ -857,6 +863,7 @@ table.tablealterarCapa td.info{
 table.tablealterarCapa2{
     margin-left:20px;
     margin-top:50px;
+    border:1px solid black;
 }
 table.tablealterarCapa2 td.icone{
     width:100px;

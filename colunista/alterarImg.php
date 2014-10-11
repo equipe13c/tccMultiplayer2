@@ -20,7 +20,7 @@
             <header id="cabecalho">
                 <?php
                 include_once '../includes/menuR.php';
-                validaAutenticacao('../index.php','2');
+                validaAutenticacao('../index.php','3');
                 ?>
             </header>
             <figure id="imgCapa">
@@ -63,32 +63,29 @@
                 </div>
                 <nav id="menu2">
                     <?php 
-                        include '../includes/menuR2.php';
+                        include '../includes/menuC.php';
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                    <form action="script2.php" method="post" enctype="multipart/form-data">
-                        <table id="tabelaPerfil" class="tablealterarCapa2">
+                    <form action="script.php" method="post" enctype="multipart/form-data">
+                        <table id="tabelaPerfil" class="tablealterarImg">
                             <tr>
-                                <th id="alterar" colspan="3">Alterar Foto de Capa</th>
-                            </tr>
-                            <tr>
-                                <td class="icone"><img src="../imagens/contacts.png" alt="imgNome" id=""> Imagem Capa</td>
+                                <td class="icone"><img src="../imagens/contacts.png" alt="imgNome" id=""></td>
                                 <td class="info">                     
                             <?php
-                                $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
-                                $result = mysql_query($query);                
-                                $imagens = mysql_num_rows($result);
-                                if($imagens === 0){
-                                $nome = "defaultCapa.jpg";            
-                                mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
-                                VALUES('$nome'".$_SESSION['code'].")");
-                                }
-                                else{
-                                $imagens2 = mysql_fetch_array($result); 
-                                $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
-                                echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imagemCapa'>";
-                                }
+                            $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
+                            $result = mysql_query($query);                
+                            $imagens = mysql_num_rows($result);
+                            if($imagens === 0){
+                            $nome = "default.jpg";            
+                            mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM, COD_IMAGEM_USUARIO)
+                            VALUES('$nome'".$_SESSION['code'].")");
+                            }
+                            else{
+                            $imagens2 = mysql_fetch_array($result); 
+                            $urlImagem = $imagens2['URL_IMAGEM'];
+                            echo "<img src='../uploads/$urlImagem' id='imagemInfo' alt='imagem'>";
+                            }
                             ?>
                                 </td>
                             </tr>

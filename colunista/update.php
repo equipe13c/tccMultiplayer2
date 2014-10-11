@@ -21,7 +21,7 @@
             <header id="cabecalho">
                 <?php
                 include_once '../includes/menuR.php';
-                validaAutenticacao('../index.php','2');
+                validaAutenticacao('../index.php','3');
                 ?>
             </header>
             <figure id="imgCapa">
@@ -64,12 +64,11 @@
                 </div>
                 <nav id="menu2">
                     <?php 
-                        include '../includes/menuR2.php';
+                        include '../includes/menuC.php';
                     ?>
                 </nav>
                 <article id="conteudo_infos" >
                     <?php
-                                            
                             function salvaLog($mensagem,$acao) {
                             $ip = $_SERVER['REMOTE_ADDR']; // Salva o IP do visitante
                             $hora = date('Y-m-d H:i:s'); // Salva a hora atual (formato MySQL)
@@ -224,7 +223,6 @@
                     break;
                     case 'Retornar':
                         //Inicio
-include_once '../includes/funcoesUteis.inc';
                             echo '<form action="update.php" method="post">';
                                 echo '<table id="tabelaPerfil" class="bordasimples">';
                                     echo '<tr class="linhasInfo">';
@@ -232,12 +230,6 @@ include_once '../includes/funcoesUteis.inc';
                                         echo '<td class="info">Endereço de e-mail</td>';
                                         echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="emailInfo"  value="'.$_SESSION['email'].'"></td>';
                                         echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'email'".', '."'".$_SESSION['email']."'".')" href="#">Editar</a></td>';
-                                    echo '</tr>';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/lock.png" alt="imgCidade" id="senhaImg"></td>';
-                                        echo '<td class="info">Senha</td>';
-                                        echo '<td class="campos"><input type="password" class="txtInfo" disabled="disabled" id="senhaInfo" name="senhaUser" value="default"></td>';
-                                        echo '<td class="edit" id="salvarSenha"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>';
                                     echo '</tr>';
                                     echo '<tr class="linhasInfo">';
                                         echo '<td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>';
@@ -253,14 +245,14 @@ include_once '../includes/funcoesUteis.inc';
                                     echo '<tr class="linhasInfo">';
                                         echo '<td class="icone"><img src="../imagens/data.png" alt="imgData" id="dataImg"></td>';
                                         echo '<td class="info">Data de nascimento</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="dataInfo"  value="'.buscarDados('data').'"></td>';
+                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="dataInfo"  value="10/02/1996"></td>';
                                         echo '<td class="edit"></td>';
                                     echo '</tr>';
                                     echo '<tr class="linhasInfo">';
                                         echo '<td class="icone"><img src="../imagens/cidade.png" alt="imgCidade" id="cidadeImg"></td>';
-                                        echo '<td class="info">Estado</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo" name="estadoUser" value="'.buscarDados('estado').'"></td>';
-                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'estado'".')" href="#">Editar</a></td>';
+                                        echo '<td class="info">Cidade</td>';
+                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo"  value="Barueri"></td>';
+                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'cidade'".')" href="#">Editar</a></td>';
                                     echo '</tr>';
                                 echo '</table>';
                             echo '</form>';
