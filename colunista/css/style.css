@@ -408,7 +408,7 @@ color: white;
 }
 #conteudo{
     width: 80%;
-    height: 725px;
+    height: auto;
     float:left;
     margin-top:0px;
     margin-left:160px;
@@ -486,7 +486,7 @@ color: white;
 }
 #conteudo_infos{
     width: 100%;
-    height: 680px;
+    height: auto;
     float:left;
     margin-top:-17px;
     margin-left:0px;
@@ -878,10 +878,11 @@ table.tablealterarCapa2 td.info{
 table.tableInserirMateria{
     margin-left:100px;
     margin-top:50px;
-    width:1300px;
+    width:900px;
+    border:1px solid black;
 }
-table.tableInserirMateria tr td{
-    height:60px;
+table.tableInserirMateria tr{
+    height:80px;
 }
 table.tableInserirMateria td.icone{
     text-align:center;
@@ -892,6 +893,11 @@ table.tableInserirMateria td.texto{
     font-size:14pt;
     
 }
+table.tableInserirMateria td.campos{
+    text-align: center;
+    font-family:century gothic;
+    font-size:14pt;
+}
 #editImgCapa{
     width:30px;
     height:30px;
@@ -899,4 +905,32 @@ table.tableInserirMateria td.texto{
 .textos_materia{
     height:25px;
     width:250px;
+}
+#jostyck{
+    width:50px;
+    height:45px;
+}
+
+.categoria{
+    margin-left:10px;
+}
+.descricao_materia{
+    min-width: 250px;
+    width:250px;
+    max-width: 250px;
+    min-height: 60px;
+    height:60px;
+    max-height: 60px;
+}
+.editImgPencil{
+    width:30px;
+    height:30px;
+}
+.conteudo_materia{
+    min-width: 450px;
+    width:450px;
+    max-width: 450px;
+    min-height: 150px;
+    height:150px;
+    max-height: 150px;
 }

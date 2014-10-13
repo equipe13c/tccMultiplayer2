@@ -68,28 +68,86 @@
                     ?>
                 </nav>
                 <article id="conteudo_infos">
-                    <form action="update.php" method="post" enctype="multipart/form-data">
+                    <form action="inserirMateriaNova.php" method="post" enctype="multipart/form-data">
                         <table id="tabelaPerfil" class="tableInserirMateria">
                             <tr>
-                                <td class="icone"><img src="../imagens/picture.png" alt="imgNome" id=""> </td>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgCapa" id=""> </td>
                                 <td class="texto"> Imagem Capa Matéria </td>
-                                <td> <input type="file" name="imagemCapa"></td>
+                                <td class="campos"> <input type="file" name="imagemCapa"></td>
                             </tr>
                             <tr>
-                                <td class="icone"><img src="../imagens/edit.png" alt="imgNome" id="editImgCapa"> </td>
+                                <td class="icone"><img src="../imagens/pencil.png" alt="imgTitulo" class="editImgPencil"> </td>
                                 <td class="texto"> Título Matéria </td>
-                                <td> <input type="text" name="titulo" class="textos_materia" id="titulo_materia"></td>
+                                <td class="campos"> <input type="text" name="titulo" class="textos_materia" id="titulo_materia"></td>
                             </tr>  
                             <tr>
-                                <td class="icone"><img src="../imagens/picture.png" alt="imgNome" id=""> </td>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgImagem" id=""> </td>
                                 <td class="texto"> Imagem Principal </td>
-                                <td> <input type="file" name="imagemPrincipal"></td>
+                                <td class="campos"> <input type="file" name="imagemPrincipal"></td>
                             </tr>
                             <tr>
-                                <td class="icone"><img src="../imagens/picture.png" alt="imgNome" id=""> </td>
-                                <td class="texto"> Imagem Principal </td>
-                                <td> <input type="file" name="imagemPrincipal"></td>
-                            </tr>   
+                                <td class="icone"><img src="../imagens/joystick.png" alt="imgJoystick" id="jostyck"> </td>
+                                <td class="texto"> Categoria </td>
+                                <td class="campos"> <input type="checkbox" name="categoria[]" class="categoria" value="1">  PlayStation
+                                     <input type="checkbox" name="categoria[]" class="categoria" value="2">  Nintendo
+                                     <input type="checkbox" name="categoria[]" class="categoria" value="3">  XBOX
+                                     <input type="checkbox" name="categoria[]" class="categoria" value="4">  PC
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/genero.png" alt="imgSerie" id=""> </td>
+                                <td class="texto"> Série </td>
+                                <td class="campos"> <input type="text" name="serie" class="textos_materia" id="serie_materia"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgImagem" id=""> </td>
+                                <td class="texto"> Imagem Miniatura </td>
+                                <td class="campos"> <input type="file" name="imagemMiniatura"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/pencil.png" alt="imgDescrição" class="editImgPencil"> </td>
+                                <td class="texto"> Descrição </td>
+                                <td class="campos"> <textarea name="descricao" class="descricao_materia"></textarea></td>
+                            </tr> 
+                            <tr>
+                                <td class="icone"><img src="../imagens/data.png" alt="imgDescrição" class="editImgPencil"> </td>
+                                <td class="texto"> Data de Lançamento </td>
+                                <td class="campos"> <input type="text" name="data_lancamento" class="textos_materia" id=""></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/pencil.png" alt="imgSerie" class="editImgPencil"> </td>
+                                <td class="texto"> Título Conteúdo </td>
+                                <td class="campos"> <input type="text" name="titulo_conteudo" class="textos_materia" id="titulo_conteudo_materia"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/pencil.png" alt="imgDescrição" class="editImgPencil"> </td>
+                                <td class="texto"> Conteúdo </td>
+                                <td class="campos"> <textarea name="conteudo" class="conteudo_materia"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/pencil.png" alt="imgDescrição" class="editImgPencil"> </td>
+                                <td class="texto"> URL Matéria </td>
+                                <td class="campos"> <input type="text" name="url_materia" class="textos_materia" id=""></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgImagem" id=""> </td>
+                                <td class="texto"> Imagem Galeria </td>
+                                <td class="campos"> <input type="file" name="imagemGaleria"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgImagem" id=""> </td>
+                                <td class="texto"> Imagem2 Galeria </td>
+                                <td class="campos"> <input type="file" name="imagemGaleria2"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"><img src="../imagens/picture.png" alt="imgImagem" id=""> </td>
+                                <td class="texto"> Imagem3 Galeria </td>
+                                <td class="campos"> <input type="file" name="imagemGaleria3"></td>
+                            </tr>
+                            <tr>
+                                <td class="icone"colspan="2"><img src="../imagens/save.png" alt="imgImagem" id=""> </td>
+                                <td class="texto" ><input type="submit" value="Postar Matéria" name="postarMateria" class="designButton"> </td>
+                            </tr>
                         </table>
                     </form>    
                 </article>                

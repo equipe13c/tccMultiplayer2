@@ -116,12 +116,14 @@ function VerificaSessao2(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                echo "<img src='../uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
-                    echo "<a  href='../admin/index.php'>Painel </a><br/>";
+                    echo "<a href='../admin/index.php'>Painel </a><br/>";
                     echo "<a href='../admin/sair.php'>Logout </a><br/>";
                   echo '</div>';
                 }
@@ -138,8 +140,10 @@ function VerificaSessao2(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                echo "<img src='../uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -160,8 +164,10 @@ function VerificaSessao2(){
                 else{
                 $imagens2 = mysql_fetch_array($result); 
                 $urlImagem = $imagens2['URL_IMAGEM'];
-                echo "<img src='../uploads/$urlImagem' id='imagem_usuario' alt='imagem'>";
-                echo "<h1 id='nome_adm'>" . $_SESSION['apelido']."</h1>";
+                echo "<img src='../uploads/$urlImagem' class='imgUsuario' alt='imagem'>";
+                $sql = mysql_query("SELECT NOME_USUARIO, APELIDO_USUARIO FROM USUARIO WHERE COD_USUARIO =". $_SESSION['code']); 
+                $result = mysql_fetch_array($sql); 
+                echo "<h1 id='nome_adm'>" . $result['APELIDO_USUARIO']."</h1>";
                 }
                 echo '</div><br/><br/>';
                 echo '<div class="links_usuario">';
@@ -172,13 +178,16 @@ function VerificaSessao2(){
                 }
                 }
                 else{
-                      echo'<form name="formulario" action="../login.php" method="post" onsubmit="return validacao();"> 
-                            <label class="stringLogin">E-mail: </label><input type="email" class="txtLogin" name="email" placeholder="E-mail de Acesso" /><br/>
-                            <label class="stringLogin">Senha: </label><input type="password" class="txtLogin" name="senha" placeholder="Senha"/> <br/><br/>
-                            <input type="submit" name="submit" id="btnLogin" value="Entrar"/>
-                            <div id="msglogin"></div><br/><br/>
-                            <a class="linksLogin" href="cadastro.php" > &nbsp; Cadastre-se</a>
-                            <a class="linksLogin" href="esqueceuSenha.php"> Esqueceu sua senha? </a>                            
+                    
+                    echo '                    
+                        <form name="formulario" action="../login.php" method="post" id="login"> 
+                        <img src="../img/user.png" alt="" class="imgUsuario">
+                        <label class="txtLogin"> Usuário: </label><input type="email" name="email"><br/><br/>
+                        <label class="txtLogin"> Senha: </label><input type="password" name="senha"><br/><br/>
+                        <div id="msglogin"></div>
+                        <input type="submit" name="submit" class="btnLogin" value="Entrar"/><br/><br/>
+                        <a class="linksLogin" href="../cadastro.php">Cadastre-se </a>
+                        <a class="linksLogin" href="../esqueceuSenha.php">Esqueceu sua senha? </a>
                         </form>';
                 }            
 }
@@ -397,4 +406,96 @@ function buscarDados($string){
     
     }
 }
+function corpoMateria($corpo){
+    $corpo = '';
+}
+function infosImagensMateria($string){
+                if($string == "capa"){   
+                    $query = "SELECT * FROM IMAGENS_MATERIA WHERE COD_MATERIA_IMAGEM = 22";
+                    $result = mysql_query($query);                
+                    $imagens = mysql_num_rows($result);
+                    if($imagens === 0){
+                    $nome = "defaultCapa.jpg";            
+                    mysql_query("INSERT INTO IMAGENS_MATERIA(IMAGEM_CAPA, COD_MATERIA_IMAGEM)
+                    VALUES('$nome','22')");
+                    }
+                    else{
+                    $imagens2 = mysql_fetch_array($result); 
+                    $urlImagem = $imagens2['IMAGEM_CAPA'];
+                    echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imgFundo'>";
+                    }
+                }
+                if($string == "imgPrincipal"){   
+                    $query = "SELECT * FROM IMAGENS_MATERIA WHERE COD_MATERIA_IMAGEM = 22";
+                    $result = mysql_query($query);                
+                    $imagens = mysql_num_rows($result);
+                    if($imagens === 0){
+                    $nome = "imgPrincipalDefault.jpg";            
+                    mysql_query("INSERT INTO IMAGENS_MATERIA(IMAGEM_PRINCIPAL, COD_MATERIA_IMAGEM)
+                    VALUES('$nome','22')");
+                    }
+                    else{
+                    $imagens2 = mysql_fetch_array($result); 
+                    $urlImagem = $imagens2['IMAGEM_PRINCIPAL'];
+                    echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imagemPrincipal'>";
+                    }
+                }
+}
+function  infoArtigos($string,$url){
+    if($string == "dataLancamento"){
+        $sql = "SELECT * FROM ARTIGO WHERE URL_ARTIGO = '$url'";
+        $result = mysql_query($sql);                
+        $info = mysql_num_rows($result);
+        if($info === 0){
+        }
+        else{
+        $informacao = mysql_fetch_array($result); 
+        $infoRecebida = $informacao['DATA_LANCAMENTO'];
+        $ano = substr($infoRecebida, 0, 4);
+        echo $ano;
+        }
+    }
+    if($string == "plataforma"){
+        $sql = "SELECT * FROM ARTIGO WHERE URL_ARTIGO = '$url'";
+        $result = mysql_query($sql);                
+        $info = mysql_num_rows($result);
+        if($info === 0){
+        }
+        else{
+        $informacao = mysql_fetch_array($result); 
+        $infoRecebida = $informacao['CATEGORIA_ARTIGO'];
+        $query = "SELECT * FROM CATEGORIA WHERE COD_CATEGORIA = $infoRecebida";
+        $resultado = mysql_query($query);
+        $resultadoQuery = mysql_fetch_array($resultado);
+        echo $resultadoQuery['NOME_CATEGORIA'];
+        }
+    }
+    if($string == "titulo"){
+        $sql = "SELECT * FROM ARTIGO WHERE ID_ARTIGO = 22";
+        $result = mysql_query($sql);                
+        $info = mysql_num_rows($result);
+        if($info === 0){
+        }
+        else{
+        $informacao = mysql_fetch_array($result); 
+        $infoRecebida = $informacao['TITULO_ARTIGO'];
+        echo "$infoRecebida";
+        }
+    }
+    if($string == "descricao"){
+        $sql = "SELECT * FROM ARTIGO WHERE ID_ARTIGO = 22";
+        $result = mysql_query($sql);                
+        $info = mysql_num_rows($result);
+        if($info === 0){
+        }
+        else{
+        $informacao = mysql_fetch_array($result); 
+        $infoRecebida = $informacao['DESCRICAO_ARTIGO'];
+        echo "$infoRecebida";
+        }
+    }
+
+    
+}
+
 ?>

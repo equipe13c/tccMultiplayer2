@@ -14,12 +14,6 @@
                             +'<td class="campos2"><input type="text" disabled="disabled" name="email_usuario"  class="txtInfo2" id="emailInfo"  value="'+valor2+'"></td>'
                             +'<td class="valid"></td>'
                         +'</tr>'
-                        +  '<tr class="linhasInfo">'
-                               + '<td class="icone"><img src="../imagens/lock.png" alt="imgCidade" id="senhaImg"></td>'
-                                +'<td class="info">Senha</td>'
-                                +'<td class="campos"><input type="password" class="txtInfo" disabled="disabled" id="senhaInfo" name="senhaUser" value="default"></td>'
-                               + '<td class="edit" id="salvarSenha"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>    '                        
-                         +  '</tr>'
                         +'<tr class="linhasInfo">'
                             +'<td class="icone2"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>'
                             +'<td class="info2">Novo e-mail</td>'
@@ -90,7 +84,7 @@
             } 
             function mostrarCam(){
             var mostrar = document.getElementById("camera");
-            mostrar.innerHTML = '<img src="../imagens/camera.png" class="imgCamera" alt="imgCamera"></a>';
+            mostrar.innerHTML = '<img src="../imagens/camera.png" class="imgCamera" alt="imgCamera">';
             }
             function retirarCam(){
             var retirar = document.getElementById("camera");

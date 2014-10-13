@@ -47,7 +47,7 @@
                             echo "<img src='../uploads/$urlImagem' id='imagemUser' alt='imagem'>";
                         ?>
                         <figure id="imgCam" >                       
-                            <a onmousedown="mostrarLinks();"  id="camera"></a>
+                            <a onclick="mostrarLinks();"  href="#" id="camera"></a>
                         </figure>
                         <nav id="menuImagem" >
 
@@ -80,7 +80,7 @@
                                 <td class="icone"><img src="../imagens/lock.png" alt="imgCidade" id="senhaImg"></td>
                                 <td class="info">Senha</td>
                                 <td class="campos"><input type="password" class="txtInfo" disabled="disabled" id="senhaInfo" name="senhaUser" value="default"></td>
-                                <td class="edit" id="salvarCid"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>                            
+                                <td class="edit" id="salvarSenha"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>                            
                             </tr>
                             <tr class="linhasInfo">
                                 <td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>

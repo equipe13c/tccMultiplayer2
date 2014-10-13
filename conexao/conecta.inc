@@ -4,7 +4,7 @@
 $server = "localhost";
 $user = "root";
 $password = "";
-$database = "multiplayer4";
+$database = "multiplayer5";
 
 $connection = mysql_connect($server,$user,$password);
 if($connection === FALSE){

@@ -72,7 +72,7 @@
                             <tr class="linhasInfo" id="toplinha">
                                 <td class="icone2"><img src="../imagens/lock.png" alt="imgMail" class="senhaImg"></td>
                                 <td class="info2">Senha Atual</td>
-                                <td class="campos2"><input type="password" name="senhaAtual"  class="txtInfo2" id="senhaInfo" ></td>
+                                <td class="campos2"><input type="password" name="senhaAtual" value="" class="txtInfo2" id="senhaInfo" ></td>
                                 <td class="valid"></td>
                             </tr>
                             <tr class="linhasInfo">

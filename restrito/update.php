@@ -224,46 +224,7 @@
                     break;
                     case 'Retornar':
                         //Inicio
-include_once '../includes/funcoesUteis.inc';
-                            echo '<form action="update.php" method="post">';
-                                echo '<table id="tabelaPerfil" class="bordasimples">';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/mail.png" alt="imgMail" id="mailImg"></td>';
-                                        echo '<td class="info">Endereço de e-mail</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="emailInfo"  value="'.$_SESSION['email'].'"></td>';
-                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'email'".', '."'".$_SESSION['email']."'".')" href="#">Editar</a></td>';
-                                    echo '</tr>';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/lock.png" alt="imgCidade" id="senhaImg"></td>';
-                                        echo '<td class="info">Senha</td>';
-                                        echo '<td class="campos"><input type="password" class="txtInfo" disabled="disabled" id="senhaInfo" name="senhaUser" value="default"></td>';
-                                        echo '<td class="edit" id="salvarSenha"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a href="alterarSenha.php">Editar</a></td>';
-                                    echo '</tr>';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>';
-                                        echo '<td class="info">Nome completo</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="nomeInfo"  value="'.$_SESSION['nome'].'"></td>';
-                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'nome'".')" href="#">Editar</a></td>';
-                                    echo '</tr>';
-                                        echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/nome.png" alt="imgNome" id="nomeImg"></td>';
-                                        echo '<td class="info">Apelido</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="apelidoInfo"  value="'.$_SESSION['apelido'].'"></td>';
-                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'apelido'".')" href="#">Editar</a></td>';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/data.png" alt="imgData" id="dataImg"></td>';
-                                        echo '<td class="info">Data de nascimento</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled"  id="dataInfo"  value="'.buscarDados('data').'"></td>';
-                                        echo '<td class="edit"></td>';
-                                    echo '</tr>';
-                                    echo '<tr class="linhasInfo">';
-                                        echo '<td class="icone"><img src="../imagens/cidade.png" alt="imgCidade" id="cidadeImg"></td>';
-                                        echo '<td class="info">Estado</td>';
-                                        echo '<td class="campos"><input type="text" class="txtInfo" disabled="disabled" id="cidadeInfo" name="estadoUser" value="'.buscarDados('estado').'"></td>';
-                                        echo '<td class="edit"><img src="../imagens/edit.png" alt="editImage" class="editImage"><a onclick="edit('."'estado'".')" href="#">Editar</a></td>';
-                                    echo '</tr>';
-                                echo '</table>';
-                            echo '</form>';
+                            echo "<script>location.href='painel.php'</script>";
                                     
                         //Fim
                         break;
