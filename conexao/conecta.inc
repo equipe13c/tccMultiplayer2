@@ -18,3 +18,4 @@ else{
     echo mysql_error(); 
     }
 }
+mysql_set_charset("utf8", $connection);

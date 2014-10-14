@@ -3,6 +3,7 @@
     <head> 
         <title> Zelda U</title>
         <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <script type="text/javascript" src="../js/funcoes.js"> </script>
         <script type="text/javascript" src="../js/jquery.js"></script>
@@ -59,14 +60,14 @@
                 <div id="tituloMateria">
                     <p class="editTitulo">
                     <?php
-                        infoArtigos('titulo','');
+                        infoArtigos('titulo','nintendo/zelda.php');
                     ?>
                     </p>
                 </div>
                 <div id="descricaoMateria">
                     <p class="editDescricao">
                     <?php
-                        infoArtigos('descricao','');
+                        infoArtigos('descricao','nintendo/zelda.php');
                     ?>
                     </p>
                     <p class="editPlataforma">
@@ -81,6 +82,35 @@
                         infoArtigos('dataLancamento','nintendo/zelda.php');
                     ?>
                     </p>
+                </div>
+                <div id="conteudoMateria">
+                    <p class="editTituloconteudo">
+                    <?php
+                        infoArtigos('tituloConteudo','nintendo/zelda.php');
+                    ?>
+                    </p>
+                    <p class="ediConteudoMateria">
+                    <?php
+                        infoArtigos('conteudoMateria','nintendo/zelda.php');
+                    ?>
+                    </p>
+                </div>
+                <div id="galeriaImagens">
+                    <figure class="imagensGaleria">
+                        <?php
+                            infosImagensMateria('imagemgaleria1');
+                        ?>
+                    </figure>
+                    <figure class="imagensGaleria">
+                        <?php
+                            infosImagensMateria('imagemgaleria2');
+                        ?>
+                    </figure>
+                    <figure class="imagensGaleria">
+                        <?php
+                            infosImagensMateria('imagemgaleria3');
+                        ?>
+                    </figure>
                 </div>
             </article>
             <footer id="footer">
