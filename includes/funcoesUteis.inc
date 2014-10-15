@@ -194,7 +194,6 @@ function VerificaSessao2(){
 function validaAutenticacao($link, $tipo){
     
     echo '<meta charset=UTF-8>';
-
     session_start();
 if(!isset($_SESSION['email']) or !isset($_SESSION['senha'])){
     if($tipo == '1'){
@@ -405,38 +404,7 @@ function buscarDados($string){
         }
     
     }
-    if($string == "imgcapa"){
-        $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
-        $result = mysql_query($query);                
-        $imagens = mysql_num_rows($result);
-        if($imagens === 0){
-        $nome = "defaultCapa.jpg";            
-        mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
-        VALUES('$nome'".$_SESSION['code'].")");
-        }
-        else{
-        $imagens2 = mysql_fetch_array($result); 
-        $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
-        echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imgCapasource'>";
-        }
-    
-    }
-    if($string == "imgcapa"){
-        $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = ".$_SESSION['code'];
-        $result = mysql_query($query);                
-        $imagens = mysql_num_rows($result);
-        if($imagens === 0){
-        $nome = "defaultCapa.jpg";            
-        mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM_CAPA, COD_IMAGEM_USUARIO)
-        VALUES('$nome'".$_SESSION['code'].")");
-        }
-        else{
-        $imagens2 = mysql_fetch_array($result); 
-        $urlImagem = $imagens2['URL_IMAGEM_CAPA'];
-        echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imgCapasource'>";
-        }
-    
-    }
+
     
 }
 function corpoMateria($corpo){
@@ -599,5 +567,120 @@ function  infoArtigos($string,$url){
         }
     }
 }
+function buscarMateriasAside(){
+                            $query = "SELECT * FROM ARTIGO ORDER BY DATA_ARTIGO DESC";
+                            $total_reg = "10";
+                            $inicio = 0;
+                            $limite = mysql_query("$query LIMIT $inicio,$total_reg"); 
+                            $result = mysql_query($query);                
+                            $tr = mysql_num_rows($result);
+                            $tp = $tr / $total_reg;
+                            if($tr === 0){
+                                echo "Nenhum Artigo encontrado";
+                            }
+                            else{
+                                while($artigos = mysql_fetch_array($limite))
+                                {      
+                                    $codigoImagem = $artigos['ID_ARTIGO'];
+                                    $urlArtigo = $artigos['URL_ARTIGO'];
+                                    $tituloArtigo = $artigos['TITULO_ARTIGO'];
+                                    $sql = "SELECT * FROM IMAGENS_MATERIA WHERE COD_MATERIA_IMAGEM = $codigoImagem";
+                                    $resultado = mysql_query($sql);
+                                    $artigos2 = mysql_fetch_array($resultado);
+                                    $imagemMini = $artigos2['IMAGEM_MINIATURA'];
+                                    echo '<div class="materiaAside">';
+                                    echo '<a href="../'.$urlArtigo.'"><div class="descricaoMateriaAside">';
+                                    echo '<p>'.$tituloArtigo .'</p>';
+                                    echo '</div></a>';
+                                    echo '<img src="../uploads/'.$imagemMini.'" class="imagemMateriaAside">';
+                                    echo '</div>';
+                            }
+                            }
+}
+function buscarMateriasAside2(){
+                            $query = "SELECT * FROM ARTIGO ORDER BY DATA_ARTIGO DESC";
+                            $total_reg = "7";
+                            $inicio = 0;
+                            $limite = mysql_query("$query LIMIT $inicio,$total_reg"); 
+                            $result = mysql_query($query);                
+                            $tr = mysql_num_rows($result);
+                            $tp = $tr / $total_reg;
+                            if($tr === 0){
+                                echo "Nenhum Artigo encontrado";
+                            }
+                            else{
+                                while($artigos = mysql_fetch_array($limite))
+                                {      
+                                    $codigoImagem = $artigos['ID_ARTIGO'];
+                                    $urlArtigo = $artigos['URL_ARTIGO'];
+                                    $tituloArtigo = $artigos['TITULO_ARTIGO'];
+                                    $sql = "SELECT * FROM IMAGENS_MATERIA WHERE COD_MATERIA_IMAGEM = $codigoImagem";
+                                    $resultado = mysql_query($sql);
+                                    $artigos2 = mysql_fetch_array($resultado);
+                                    $imagemMini = $artigos2['IMAGEM_MINIATURA'];
+                                    echo '<div class="materiaAside" >';
+                                    echo '<a href="'.$urlArtigo.'"><div class="descricaoMateriaAside">';
+                                    echo '<p>'.$tituloArtigo .'</p>';
+                                    echo '</div></a>';
+                                    echo '<img src="uploads/'.$imagemMini.'" class="imagemMateriaAside">';
+                                    echo '</div>';
+                            }
+                            }
+}
+function buscarMateriasSlide(){
+                            $query = "SELECT * FROM ARTIGO ORDER BY DATA_ARTIGO DESC";
+                            $total_reg = "4";
+                            $inicio = 0;
+                            $limite = mysql_query("$query LIMIT $inicio,$total_reg"); 
+                            $result = mysql_query($query);                
+                            $tr = mysql_num_rows($result);
+                            $tp = $tr / $total_reg;
+                            if($tr === 0){
+                                echo "Nenhum Artigo encontrado";
+                            }
+                            else{
+                                while($artigos = mysql_fetch_array($limite))
+                                {      
+                                    $codigoImagem = $artigos['ID_ARTIGO'];
+                                    $urlArtigo = $artigos['URL_ARTIGO'];
+                                    $tituloArtigo = $artigos['TITULO_ARTIGO'];
+                                    $descricaoArtigo = $artigos['DESCRICAO_ARTIGO'];
+                                    $sql = "SELECT * FROM IMAGENS_MATERIA WHERE COD_MATERIA_IMAGEM = $codigoImagem";
+                                    $resultado = mysql_query($sql);
+                                    $artigos2 = mysql_fetch_array($resultado);
+                                    $imagemMini = $artigos2['IMAGEM_MINIATURA'];
+                                    $imagemCapa = $artigos2['IMAGEM_CAPA'];
+                                    echo '<a href="'.$urlArtigo.'">';
+                                    echo '<div id="descricaoSlide">';
+                                    echo $descricaoArtigo;
+                                    echo '</div></a>';
+                                    echo '<img src="uploads/'.$imagemCapa.'" class="imgGaleria">';
+                                    echo '</a>';
+                            }
+                            }
+}
 
+function buscarImagemAutor($autor){
+                    $query = "SELECT * FROM IMAGEM_USUARIO WHERE COD_IMAGEM_USUARIO = $autor";
+                    $result = mysql_query($query);                
+                    $imagens = mysql_num_rows($result);
+                    if($imagens === 0){
+                    $nome = "Default.jpg";            
+                    mysql_query("INSERT INTO IMAGEM_USUARIO(URL_IMAGEM, COD_MATERIA_IMAGEM)
+                    VALUES('$nome','22')");
+                    }
+                    else{
+                    $imagens2 = mysql_fetch_array($result); 
+                    $urlImagem = $imagens2['URL_IMAGEM'];
+                    echo "<img src='../uploads/$urlImagem' alt='Imagem' id='imgAutor'>";
+                    }
+}
+function buscarDescAutor($autor){
+                    $query = "SELECT * FROM USUARIO WHERE COD_USUARIO = $autor";
+                    $result = mysql_query($query);                
+                    $imagens = mysql_num_rows($result);
+                    $imagens2 = mysql_fetch_array($result); 
+                    $urlImagem = $imagens2['DESCRICAO_USUARIO'];
+                    echo "$urlImagem";
+}
 ?>

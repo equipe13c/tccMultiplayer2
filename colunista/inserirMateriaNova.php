@@ -10,12 +10,13 @@ $tituloArtigo = $_POST['titulo_conteudo'];
 $categoria = $_POST['categoria'];
 $data = date('Y-m-d');
 $hora = date('H:i:s');
-$autor = $_SESSION['email'];
+$autor = $_SESSION['code'];
 $urlArtigo = $_POST['url_materia'];
 $descricaoArtigo = $_POST['descricao'];
 $dataLancamento = $_POST['data_lancamento'];
 $serieArtigo = $_POST['serie'];
 $conteudoArtigo = $_POST['conteudo'];
+$conteudoArtigo2 = $_POST['conteudo2'];
 $tituloConteudoArtigo = $_POST['titulo_conteudo'];
 
 
@@ -229,17 +230,230 @@ $salt = geraSaltAleatorio();
                                                                         for( $i=0; $i<sizeof( $categoria ); $i++ ){
                                                                            $categoriaArtigo = $categoria[$i];
                                                                            if($categoriaArtigo == "1"){
-                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO)
-                                                                                VALUES('$tituloArtigo',1,'$data','$hora','$autor','playstation/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo')";
+                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO,CONTEUDO_ARTIGO2)
+                                                                                VALUES('$tituloArtigo',1,'$data','$hora',$autor,'playstation/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo', '$conteudoArtigo2')";
                                                                                if(mysql_query($sql)){
                                                                                    echo "Nova Matéria Inserida";
-                                                                                   $busca = "SELECT ID_ARTIGO FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%$tituloArtigo%'";
+                                                                                   $busca = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO = '$tituloArtigo' AND URL_ARTIGO = 'playstation/$urlArtigo.php'"; 
                                                                                    $result = mysql_query($busca);
                                                                                    $resultBusca = mysql_fetch_array($result);
                                                                                    $sql = "INSERT INTO IMAGENS_MATERIA(COD_MATERIA_IMAGEM, IMAGEM_CAPA, IMAGEM_PRINCIPAL, IMAGEM_GALERIA, IMAGEM_GALERIA2, IMAGEM_GALERIA3, IMAGEM_MINIATURA)
                                                                                        VALUES(".$resultBusca['ID_ARTIGO'].", '$imgCapaname', '$imagemPrincipalname', '$imagemGalerianame', '$imagemGaleria2name', '$imagemGaleria3', '$imagemMiniaturaname')";
                                                                                    if(mysql_query($sql)){
-                                                                                       
+                                                                                        $codigo_materia = $resultBusca['ID_ARTIGO'];
+                                                                                        $urlArtigoP = $resultBusca['URL_ARTIGO'];
+                                                                                        
+                                                                                                $backMenu1 = "#9C1006";
+                                                                                                $backMenu2 = "#9C1006";
+                                                                                                $backPrincipal = "#9C1006";
+                                                                                                $fundoTitulo = "#9C1006";
+                                                                                                $fundoDesc = "#FCC6C0";
+                                                                                                $descricaoCol = "#9C1006";
+                                                                                                $fundoLogar = "#9C1006";
+                                                                                                $logo = "002.png";
+$corpo = '<!DOCTYPE html>
+<html>                                                                                  
+    <head> 
+        <title> '.$tituloArtigo.'</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="../js/funcoes.js"> </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/cycle.js"></script>
+        <script type="text/javascript" src="../js/javascript.js"></script>
+        <script type="text/javascript" src="../js/menu2.js"></script>
+        <script type="text/javascript" src="../js/restrito.js"></script>
+        <script type="text/javascript"> 
+            onload = function(){
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+                var imgLogo = document.getElementById("img-logo"); 
+                imgMiniLogo.innerHTML = "'."<img src='../imagens/logosReduzidos".$logo."' alt='' id='miniLogo'>".'";
+                imgLogo.innerHTML = "'."<img src='../imagens/logo".$logo."' alt='' id='logo'>".'";  
+                document.getElementById("nav").style.backgroundColor = "'.$backMenu1.'";                
+                document.getElementById("imgPrincipal").style.backgroundColor = "'.$backPrincipal.'"; 
+                document.getElementById("tituloMateria").style.backgroundColor = "'.$fundoTitulo.'";
+                document.getElementById("navReduzido").style.backgroundColor = "'.$backMenu2.'";
+                document.getElementById("fundoDescricaoMateria").style.backgroundColor = "'.$fundoDesc.'";
+                document.getElementById("descricaoColunista").style.backgroundColor = "'.$descricaoCol.'";  
+                document.getElementById("logar").style.borderBottom = "solid 5px '.$descricaoCol.'"; 
+                document.getElementById("botaoLogin").style.backgroundColor = "'.$fundoLogar.'";
+                document.getElementById("tituloPagina").style.backgroundColor = "'.$fundoLogar.'";            
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+            };
+        </script>       
+        
+    </head> 
+<body>
+        '.'<section id="container">
+            <?php
+                '."include_once '../conexao/conecta.inc';
+                include_once '../includes/funcoesUteis.inc';
+                session_start();
+            ?>
+            ".'<header id="cabecalho">
+                <?php
+                    '."include_once '../includes/menuMaterias.php';
+                ?>
+            ".'<figure id="imgCapa">
+                <?php
+                '."infosImagensMateria('capa','".$codigo_materia."');
+                ?>
+                
+            </figure>
+                ".'<div id="logar">
+                    <?php
+                       '."VerificaSessao2('');
+                    ?>                    
+                </div>
+
+            </header>
+
+
+
+            ".'<article id="conteudo">
+                <figure id="imgPrincipal">
+                    <?php
+                       '." infosImagensMateria('imgPrincipal','".$codigo_materia."');
+                    ?>
+                </figure>
+                ".'<div id="tituloMateria">
+                    <div id="caixaTitulo"><h1 class="editTitulo"> Zelda U
+                    <?php
+                       '." infoArtigos('titulo','".$urlArtigoP."');
+                    ?>
+                     </h1></div>
+                </div>
+                ".'<div id="fundoDescricaoMateria">
+                    <div id="descricaoMateria">
+                        <p class="editDescricao">
+                        <?php
+                           '." infoArtigos('descricao','".$urlArtigoP."');
+                        ?>
+                        </p>
+                       ".' <p class="editPlataforma">
+                        <?php
+                            echo "<b>Desenvolvedora:</b>    ";
+                           '." infoArtigos('plataforma','".$urlArtigoP."');
+                        ?>
+                        </p>
+                        ".'<p class="editDatalancamento">
+                        <?php
+                            echo "<b>Data de Lançamento:</b>    ";
+                            '."infoArtigos('dataLancamento','".$urlArtigoP."');
+                        ?>
+                        </p>
+                    </div>
+                </div>    
+                ".'<div id="conteudoMateria">
+                    <p class="editTituloconteudo">
+                    <?php
+                       '." infoArtigos('tituloConteudo','".$urlArtigoP."');
+                    ?>
+                    </p>
+                    ".'<p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+               ".' <div id="galeriaImagens">
+                    <figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria1','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria">
+                        <?php
+                            '."infosImagensMateria('imagemgaleria2','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria3','".$codigo_materia."');
+                        ?>
+                    </figure>
+                </div>
+                ".'<div id="conteudoMateria2">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria2','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="galeriaVideo">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="colunista">     
+                    <figure id="autor_materia">
+                    <?php
+                       '." buscarImagemAutor('".$codigo_materia."');
+                    ?>
+                    </figure>
+                    ".'<div id="descricaoColunista"> 
+                        <p>                     
+                            <?php
+                                '."    buscarDescAutor('".$codigo_materia."');
+                            ?> 
+                        </p>
+                    </div>
+                </div>
+                ".'<div id="comentario">
+                    <div class="comentarios">
+                        
+                    <figure class="imagem_user"> 
+                        <?php
+                            buscarFotoUser();
+                        ?>
+                    </figure>
+                                            
+                    <div class="coment">
+                        '."<form name='frmComentar' method='post' action='../comentar.php' id='enviar'>
+                        <textarea id='textocomentario' name='comentario'> </textarea>                        
+                        ".'<input type="hidden" '."name='codigoArtigo' value='".$codigo_materia."' > 
+                        ".'<input type="submit" '."name='btnComentar' ".'value="Publicar" class="botaoEnviar" > 
+                        </form>
+                    </div>   
+                    </div>
+                    '."<div class='exibirComent'>
+                        <?php
+                            listarComentarios('".$codigo_materia."');
+                        ?>
+                    </div>
+                </div>
+            </article>
+            ".'<aside id="aside1">
+                    <?php
+                       buscarMateriasAside();
+                   ?>
+                <br/>
+            </aside>
+            <div id="voltarTopo">
+                <a href="" class="subir">
+                    <img src="imagens/topo.png" alt="">
+                    <p> Voltar ao topo </p>
+                </a>                    
+            </div>
+            <div id="imgFooter"'." ondragstart='return false'> 
+                ".'<img src="../imagens/ideiaRodape.png" alt=""> 
+            </div>
+            <footer id="footer">
+                <?php
+                    '."include_once '../includes/rodapeMaterias.php';
+                ?>
+            </footer>            
+        </section>
+    </body>
+</html>'";
+                   
+                                                                                        $url_materia = "../" . $urlArtigoP;
+                                                                                        $formatacao = $corpo;
+                                                                                        $fp = fopen($url_materia , "w");
+                                                                                        $fw = fwrite($fp, $formatacao);
                                                                                    }
                                                                                    else{
                                                                                        echo mysql_error();
@@ -252,17 +466,229 @@ $salt = geraSaltAleatorio();
                                                                                }
                                                                             }
                                                                            if($categoriaArtigo == "2"){
-                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO)
-                                                                                VALUES('$tituloArtigo',2,'$data','$hora','$autor','nintendo/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo')";
+                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO,CONTEUDO_ARTIGO2)
+                                                                                VALUES('$tituloArtigo',2,'$data','$hora',$autor,'nintendo/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo', '$conteudoArtigo2')";
                                                                                if(mysql_query($sql)){
                                                                                    echo "Nova Matéria Inserida";
-                                                                                   $busca = "SELECT ID_ARTIGO FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%$tituloArtigo%'";
+                                                                                   $busca = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO = '$tituloArtigo' AND URL_ARTIGO = 'nintendo/$urlArtigo.php'"; 
                                                                                    $result = mysql_query($busca);
                                                                                    $resultBusca = mysql_fetch_array($result);
                                                                                    $sql = "INSERT INTO IMAGENS_MATERIA(COD_MATERIA_IMAGEM, IMAGEM_CAPA, IMAGEM_PRINCIPAL, IMAGEM_GALERIA, IMAGEM_GALERIA2, IMAGEM_GALERIA3, IMAGEM_MINIATURA)
                                                                                        VALUES(".$resultBusca['ID_ARTIGO'].", '$imgCapaname', '$imagemPrincipalname', '$imagemGalerianame', '$imagemGaleria2name', '$imagemGaleria3', '$imagemMiniaturaname')";
                                                                                    if(mysql_query($sql)){
-                                                                                       
+                                                                                        $codigo_materia = $resultBusca['ID_ARTIGO'];
+                                                                                        $urlArtigoP = $resultBusca['URL_ARTIGO'];
+                                                                                        
+        $backMenu1 = "#009FE3";
+        $backMenu2 = "#009FE3";
+        $backPrincipal = "#009FE3";
+        $fundoTitulo = "#009FE3";
+        $fundoDesc = "#CEECF5";
+        $descricaoCol = "#009FE3";
+        $fundoLogar = "#009FE3";
+        $logo = "005.png";
+$corpo = '<!DOCTYPE html>
+<html>                                                                                  
+    <head> 
+        <title>'.$tituloArtigo.'</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="../js/funcoes.js"> </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/cycle.js"></script>
+        <script type="text/javascript" src="../js/javascript.js"></script>
+        <script type="text/javascript" src="../js/menu2.js"></script>
+        <script type="text/javascript" src="../js/restrito.js"></script>
+        <script type="text/javascript"> 
+            onload = function(){
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+                var imgLogo = document.getElementById("img-logo"); 
+                imgMiniLogo.innerHTML = "'."<img src='../imagens/logosReduzidos".$logo."' alt='' id='miniLogo'>".'";
+                imgLogo.innerHTML = "'."<img src='../imagens/logo".$logo."' alt='' id='logo'>".'";  
+                document.getElementById("nav").style.backgroundColor = "'.$backMenu1.'";                
+                document.getElementById("imgPrincipal").style.backgroundColor = "'.$backPrincipal.'"; 
+                document.getElementById("tituloMateria").style.backgroundColor = "'.$fundoTitulo.'";
+                document.getElementById("navReduzido").style.backgroundColor = "'.$backMenu2.'";
+                document.getElementById("fundoDescricaoMateria").style.backgroundColor = "'.$fundoDesc.'";
+                document.getElementById("descricaoColunista").style.backgroundColor = "'.$descricaoCol.'";  
+                document.getElementById("logar").style.borderBottom = "solid 5px '.$descricaoCol.'"; 
+                document.getElementById("botaoLogin").style.backgroundColor = "'.$fundoLogar.'";
+                document.getElementById("tituloPagina").style.backgroundColor = "'.$fundoLogar.'";            
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+            };
+        </script>       
+        
+    </head> 
+<body>
+        '.'<section id="container">
+            <?php
+                '."include_once '../conexao/conecta.inc';
+                include_once '../includes/funcoesUteis.inc';
+                session_start();
+            ?>
+            ".'<header id="cabecalho">
+                <?php
+                    '."include_once '../includes/menuMaterias.php';
+                ?>
+            ".'<figure id="imgCapa">
+                <?php
+                '."infosImagensMateria('capa','".$codigo_materia."');
+                ?>
+                
+            </figure>
+                ".'<div id="logar">
+                    <?php
+                       '."VerificaSessao2('');
+                    ?>                    
+                </div>
+
+            </header>
+
+
+
+            ".'<article id="conteudo">
+                <figure id="imgPrincipal">
+                    <?php
+                       '." infosImagensMateria('imgPrincipal','".$codigo_materia."');
+                    ?>
+                </figure>
+                ".'<div id="tituloMateria">
+                    <div id="caixaTitulo"><h1 class="editTitulo"> Zelda U
+                    <?php
+                       '." infoArtigos('titulo','".$urlArtigoP."');
+                    ?>
+                     </h1></div>
+                </div>
+                ".'<div id="fundoDescricaoMateria">
+                    <div id="descricaoMateria">
+                        <p class="editDescricao">
+                        <?php
+                           '." infoArtigos('descricao','".$urlArtigoP."');
+                        ?>
+                        </p>
+                       ".' <p class="editPlataforma">
+                        <?php
+                            echo "<b>Desenvolvedora:</b>    ";
+                           '." infoArtigos('plataforma','".$urlArtigoP."');
+                        ?>
+                        </p>
+                        ".'<p class="editDatalancamento">
+                        <?php
+                            echo "<b>Data de Lançamento:</b>    ";
+                            '."infoArtigos('dataLancamento','".$urlArtigoP."');
+                        ?>
+                        </p>
+                    </div>
+                </div>    
+                ".'<div id="conteudoMateria">
+                    <p class="editTituloconteudo">
+                    <?php
+                       '." infoArtigos('tituloConteudo','".$urlArtigoP."');
+                    ?>
+                    </p>
+                    ".'<p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+               ".' <div id="galeriaImagens">
+                    <figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria1','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria">
+                        <?php
+                            '."infosImagensMateria('imagemgaleria2','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria3','".$codigo_materia."');
+                        ?>
+                    </figure>
+                </div>
+                ".'<div id="conteudoMateria2">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria2','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="galeriaVideo">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="colunista">     
+                    <figure id="autor_materia">
+                    <?php
+                       '." buscarImagemAutor('".$codigo_materia."');
+                    ?>
+                    </figure>
+                    ".'<div id="descricaoColunista"> 
+                        <p>                     
+                            <?php
+                                '."    buscarDescAutor('".$codigo_materia."');
+                            ?> 
+                        </p>
+                    </div>
+                </div>
+                ".'<div id="comentario">
+                    <div class="comentarios">
+                        
+                    <figure class="imagem_user"> 
+                        <?php
+                            buscarFotoUser();
+                        ?>
+                    </figure>
+                                            
+                    <div class="coment">
+                        '."<form name='frmComentar' method='post' action='../comentar.php' id='enviar'>
+                        <textarea id='textocomentario' name='comentario'> </textarea>                        
+                        ".'<input type="hidden" '."name='codigoArtigo' value='".$codigo_materia."' > 
+                        ".'<input type="submit" '."name='btnComentar' ".'value="Publicar" class="botaoEnviar" > 
+                        </form>
+                    </div>   
+                    </div>
+                    '."<div class='exibirComent'>
+                        <?php
+                            listarComentarios('".$codigo_materia."');
+                        ?>
+                    </div>
+                </div>
+            </article>
+            ".'<aside id="aside1">
+                    <?php
+                       buscarMateriasAside();
+                   ?>
+                <br/>
+            </aside>
+            <div id="voltarTopo">
+                <a href="" class="subir">
+                    <img src="imagens/topo.png" alt="">
+                    <p> Voltar ao topo </p>
+                </a>                    
+            </div>
+            <div id="imgFooter"'." ondragstart='return false'> 
+                ".'<img src="../imagens/ideiaRodape.png" alt=""> 
+            </div>
+            <footer id="footer">
+                <?php
+                    '."include_once '../includes/rodapeMaterias.php';
+                ?>
+            </footer>            
+        </section>
+    </body>
+</html>'";
+                                                                                        $url_materia =  "../" . $urlArtigoP;
+                                                                                        $formatacao = $corpo;
+                                                                                        $fp = fopen($url_materia , "w");
+                                                                                        $fw = fwrite($fp, $formatacao);
                                                                                    }
                                                                                    else{
                                                                                        echo mysql_error();
@@ -275,18 +701,230 @@ $salt = geraSaltAleatorio();
                                                                                }
                                                                             }
                                                                            if($categoriaArtigo == "3"){
-                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO)
-                                                                                VALUES('$tituloArtigo',3,'$data','$hora','$autor','xbox/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo')";
+                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO,CONTEUDO_ARTIGO2)
+                                                                                VALUES('$tituloArtigo',3, '$data','$hora',$autor,'xbox/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo', '$conteudoArtigo2')";
                                                                                if(mysql_query($sql)){
                                                                                    echo "Nova Matéria Inserida";
-                                                                                   $busca = "SELECT ID_ARTIGO FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%$tituloArtigo%'";
+                                                                                   $busca = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO = '$tituloArtigo' AND URL_ARTIGO = 'xbox/$urlArtigo.php'"; 
                                                                                    $result = mysql_query($busca);
                                                                                    $resultBusca = mysql_fetch_array($result);
                                                                                    $sql = "INSERT INTO IMAGENS_MATERIA(COD_MATERIA_IMAGEM, IMAGEM_CAPA, IMAGEM_PRINCIPAL, IMAGEM_GALERIA, IMAGEM_GALERIA2, IMAGEM_GALERIA3, IMAGEM_MINIATURA)
                                                                                        VALUES(".$resultBusca['ID_ARTIGO'].", '$imgCapaname', '$imagemPrincipalname', '$imagemGalerianame', '$imagemGaleria2name', '$imagemGaleria3', '$imagemMiniaturaname')";
                                                                                    if(mysql_query($sql)){
-                                                                                        $formatacao = corpoMateria($corpo);
-                                                                                        $fp = fopen($urlFinal , "w");
+                                                                                        $codigo_materia = $resultBusca['ID_ARTIGO'];
+                                                                                        $urlArtigoP = $resultBusca['URL_ARTIGO'];
+                                                                                        
+        $backMenu1 = "#8EA50D";
+        $backMenu2 = "#8EA50D";
+        $backPrincipal = "#8EA50D";
+        $fundoTitulo = "#8EA50D";
+        $fundoDesc = "#A9F5D0";
+        $descricaoCol = "#8EA50D";
+        $fundoLogar = "#8EA50D";
+        $logo = "003.png";
+$corpo = '<!DOCTYPE html>
+<html>                                                                                  
+    <head> 
+        <title>'.$tituloArtigo.'</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="../js/funcoes.js"> </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/cycle.js"></script>
+        <script type="text/javascript" src="../js/javascript.js"></script>
+        <script type="text/javascript" src="../js/menu2.js"></script>
+        <script type="text/javascript" src="../js/restrito.js"></script>
+        <script type="text/javascript"> 
+            onload = function(){
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+                var imgLogo = document.getElementById("img-logo"); 
+                imgMiniLogo.innerHTML = "'."<img src='../imagens/logosReduzidos".$logo."' alt='' id='miniLogo'>".'";
+                imgLogo.innerHTML = "'."<img src='../imagens/logo".$logo."' alt='' id='logo'>".'";  
+                document.getElementById("nav").style.backgroundColor = "'.$backMenu1.'";                
+                document.getElementById("imgPrincipal").style.backgroundColor = "'.$backPrincipal.'"; 
+                document.getElementById("tituloMateria").style.backgroundColor = "'.$fundoTitulo.'";
+                document.getElementById("navReduzido").style.backgroundColor = "'.$backMenu2.'";
+                document.getElementById("fundoDescricaoMateria").style.backgroundColor = "'.$fundoDesc.'";
+                document.getElementById("descricaoColunista").style.backgroundColor = "'.$descricaoCol.'";  
+                document.getElementById("logar").style.borderBottom = "solid 5px '.$descricaoCol.'"; 
+                document.getElementById("botaoLogin").style.backgroundColor = "'.$fundoLogar.'";
+                document.getElementById("tituloPagina").style.backgroundColor = "'.$fundoLogar.'";            
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+            };
+        </script>       
+        
+    </head> 
+<body>
+        '.'<section id="container">
+            <?php
+                '."include_once '../conexao/conecta.inc';
+                include_once '../includes/funcoesUteis.inc';
+                session_start();
+            ?>
+            ".'<header id="cabecalho">
+                <?php
+                    '."include_once '../includes/menuMaterias.php';
+                ?>
+            ".'<figure id="imgCapa">
+                <?php
+                '."infosImagensMateria('capa','".$codigo_materia."');
+                ?>
+                
+            </figure>
+                ".'<div id="logar">
+                    <?php
+                       '."VerificaSessao2('');
+                    ?>                    
+                </div>
+
+            </header>
+
+
+
+            ".'<article id="conteudo">
+                <figure id="imgPrincipal">
+                    <?php
+                       '." infosImagensMateria('imgPrincipal','".$codigo_materia."');
+                    ?>
+                </figure>
+                ".'<div id="tituloMateria">
+                    <div id="caixaTitulo"><h1 class="editTitulo"> Zelda U
+                    <?php
+                       '." infoArtigos('titulo','".$urlArtigoP."');
+                    ?>
+                     </h1></div>
+                </div>
+                ".'<div id="fundoDescricaoMateria">
+                    <div id="descricaoMateria">
+                        <p class="editDescricao">
+                        <?php
+                           '." infoArtigos('descricao','".$urlArtigoP."');
+                        ?>
+                        </p>
+                       ".' <p class="editPlataforma">
+                        <?php
+                            echo "<b>Desenvolvedora:</b>    ";
+                           '." infoArtigos('plataforma','".$urlArtigoP."');
+                        ?>
+                        </p>
+                        ".'<p class="editDatalancamento">
+                        <?php
+                            echo "<b>Data de Lançamento:</b>    ";
+                            '."infoArtigos('dataLancamento','".$urlArtigoP."');
+                        ?>
+                        </p>
+                    </div>
+                </div>    
+                ".'<div id="conteudoMateria">
+                    <p class="editTituloconteudo">
+                    <?php
+                       '." infoArtigos('tituloConteudo','".$urlArtigoP."');
+                    ?>
+                    </p>
+                    ".'<p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+               ".' <div id="galeriaImagens">
+                    <figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria1','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria">
+                        <?php
+                            '."infosImagensMateria('imagemgaleria2','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria3','".$codigo_materia."');
+                        ?>
+                    </figure>
+                </div>
+                ".'<div id="conteudoMateria2">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria2','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="galeriaVideo">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="colunista">     
+                    <figure id="autor_materia">
+                    <?php
+                       '." buscarImagemAutor('".$codigo_materia."');
+                    ?>
+                    </figure>
+                    ".'<div id="descricaoColunista"> 
+                        <p>                     
+                            <?php
+                                '."    buscarDescAutor('".$codigo_materia."');
+                            ?> 
+                        </p>
+                    </div>
+                </div>
+                ".'<div id="comentario">
+                    <div class="comentarios">
+                        
+                    <figure class="imagem_user"> 
+                        <?php
+                            buscarFotoUser();
+                        ?>
+                    </figure>
+                                            
+                    <div class="coment">
+                        '."<form name='frmComentar' method='post' action='../comentar.php' id='enviar'>
+                        <textarea id='textocomentario' name='comentario'> </textarea>                        
+                        ".'<input type="hidden" '."name='codigoArtigo' value='".$codigo_materia."' > 
+                        ".'<input type="submit" '."name='btnComentar' ".'value="Publicar" class="botaoEnviar" > 
+                        </form>
+                    </div>   
+                    </div>
+                    '."<div class='exibirComent'>
+                        <?php
+                            listarComentarios('".$codigo_materia."');
+                        ?>
+                    </div>
+                </div>
+            </article>
+            ".'<aside id="aside1">
+                    <?php
+                       buscarMateriasAside();
+                   ?>
+                <br/>
+            </aside>
+            <div id="voltarTopo">
+                <a href="" class="subir">
+                    <img src="imagens/topo.png" alt="">
+                    <p> Voltar ao topo </p>
+                </a>                    
+            </div>
+            <div id="imgFooter"'." ondragstart='return false'> 
+                ".'<img src="../imagens/ideiaRodape.png" alt=""> 
+            </div>
+            <footer id="footer">
+                <?php
+                    '."include_once '../includes/rodapeMaterias.php';
+                ?>
+            </footer>            
+        </section>
+    </body>
+</html>'";
+                   
+                   
+                                                                                        $url_materia =  "../" . $urlArtigoP;
+                                                                                        $formatacao = $corpo;
+                                                                                        $fp = fopen($url_materia , "w");
                                                                                         $fw = fwrite($fp, $formatacao);
                                                                                    }
                                                                                    else{
@@ -300,17 +938,229 @@ $salt = geraSaltAleatorio();
                                                                                }
                                                                             }
                                                                            if($categoriaArtigo == "4"){
-                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO)
-                                                                                VALUES('$tituloArtigo',4,'$data','$hora','$autor','pc/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo')";
+                                                                               $sql = "INSERT INTO ARTIGO(TITULO_ARTIGO, CATEGORIA_ARTIGO,DATA_ARTIGO, HORA_ARTIGO, AUTOR_ARTIGO, URL_ARTIGO, DESCRICAO_ARTIGO, DATA_LANCAMENTO, SERIE_ARTIGO, CONTEUDO_ARTIGO, TITULO_CONTEUDO_ARTIGO,CONTEUDO_ARTIGO2)
+                                                                                VALUES('$tituloArtigo',4,'$data','$hora',$autor,'pc/$urlArtigo.php','$descricaoArtigo','$dataLancamento', '$serieArtigo', '$conteudoArtigo', '$tituloConteudoArtigo', '$conteudoArtigo2')";
                                                                                if(mysql_query($sql)){
                                                                                    echo "Nova Matéria Inserida";
-                                                                                   $busca = "SELECT ID_ARTIGO FROM ARTIGO WHERE TITULO_ARTIGO LIKE '%$tituloArtigo%'";
+                                                                                   $busca = "SELECT * FROM ARTIGO WHERE TITULO_ARTIGO = '$tituloArtigo' AND URL_ARTIGO = 'pc/$urlArtigo.php'"; 
                                                                                    $result = mysql_query($busca);
                                                                                    $resultBusca = mysql_fetch_array($result);
                                                                                    $sql = "INSERT INTO IMAGENS_MATERIA(COD_MATERIA_IMAGEM, IMAGEM_CAPA, IMAGEM_PRINCIPAL, IMAGEM_GALERIA, IMAGEM_GALERIA2, IMAGEM_GALERIA3, IMAGEM_MINIATURA)
                                                                                        VALUES(".$resultBusca['ID_ARTIGO'].", '$imgCapaname', '$imagemPrincipalname', '$imagemGalerianame', '$imagemGaleria2name', '$imagemGaleria3', '$imagemMiniaturaname')";
                                                                                    if(mysql_query($sql)){
-                                                                                       
+                                                                                        $codigo_materia = $resultBusca['ID_ARTIGO'];
+                                                                                        $urlArtigoP = $resultBusca['URL_ARTIGO'];
+                                                                                        
+        $backMenu1 = "#F39200";
+        $backMenu2 = "#F39200";
+        $backPrincipal = "#F39200";
+        $fundoTitulo = "#F39200";
+        $fundoDesc = "#F7D47F";
+        $descricaoCol = "#F39200";
+        $fundoLogar = "#F39200";
+        $logo = "006.png";
+  $corpo = '<!DOCTYPE html>
+<html>                                                                                  
+    <head> 
+        <title> '.$tituloArtigo.'</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="../js/funcoes.js"> </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/cycle.js"></script>
+        <script type="text/javascript" src="../js/javascript.js"></script>
+        <script type="text/javascript" src="../js/menu2.js"></script>
+        <script type="text/javascript" src="../js/restrito.js"></script>
+        <script type="text/javascript"> 
+            onload = function(){
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+                var imgLogo = document.getElementById("img-logo"); 
+                imgMiniLogo.innerHTML = "'."<img src='../imagens/logosReduzidos".$logo."' alt='' id='miniLogo'>".'";
+                imgLogo.innerHTML = "'."<img src='../imagens/logo".$logo."' alt='' id='logo'>".'";  
+                document.getElementById("nav").style.backgroundColor = "'.$backMenu1.'";                
+                document.getElementById("imgPrincipal").style.backgroundColor = "'.$backPrincipal.'"; 
+                document.getElementById("tituloMateria").style.backgroundColor = "'.$fundoTitulo.'";
+                document.getElementById("navReduzido").style.backgroundColor = "'.$backMenu2.'";
+                document.getElementById("fundoDescricaoMateria").style.backgroundColor = "'.$fundoDesc.'";
+                document.getElementById("descricaoColunista").style.backgroundColor = "'.$descricaoCol.'";  
+                document.getElementById("logar").style.borderBottom = "solid 5px '.$descricaoCol.'"; 
+                document.getElementById("botaoLogin").style.backgroundColor = "'.$fundoLogar.'";
+                document.getElementById("tituloPagina").style.backgroundColor = "'.$fundoLogar.'";            
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+            };
+        </script>       
+        
+    </head> 
+<body>
+        '.'<section id="container">
+            <?php
+                '."include_once '../conexao/conecta.inc';
+                include_once '../includes/funcoesUteis.inc';
+                session_start();
+            ?>
+            ".'<header id="cabecalho">
+                <?php
+                    '."include_once '../includes/menuMaterias.php';
+                ?>
+            ".'<figure id="imgCapa">
+                <?php
+                '."infosImagensMateria('capa','".$codigo_materia."');
+                ?>
+                
+            </figure>
+                ".'<div id="logar">
+                    <?php
+                       '."VerificaSessao2('');
+                    ?>                    
+                </div>
+
+            </header>
+
+
+
+            ".'<article id="conteudo">
+                <figure id="imgPrincipal">
+                    <?php
+                       '." infosImagensMateria('imgPrincipal','".$codigo_materia."');
+                    ?>
+                </figure>
+                ".'<div id="tituloMateria">
+                    <div id="caixaTitulo"><h1 class="editTitulo"> Zelda U
+                    <?php
+                       '." infoArtigos('titulo','".$urlArtigoP."');
+                    ?>
+                     </h1></div>
+                </div>
+                ".'<div id="fundoDescricaoMateria">
+                    <div id="descricaoMateria">
+                        <p class="editDescricao">
+                        <?php
+                           '." infoArtigos('descricao','".$urlArtigoP."');
+                        ?>
+                        </p>
+                       ".' <p class="editPlataforma">
+                        <?php
+                            echo "<b>Desenvolvedora:</b>    ";
+                           '." infoArtigos('plataforma','".$urlArtigoP."');
+                        ?>
+                        </p>
+                        ".'<p class="editDatalancamento">
+                        <?php
+                            echo "<b>Data de Lançamento:</b>    ";
+                            '."infoArtigos('dataLancamento','".$urlArtigoP."');
+                        ?>
+                        </p>
+                    </div>
+                </div>    
+                ".'<div id="conteudoMateria">
+                    <p class="editTituloconteudo">
+                    <?php
+                       '." infoArtigos('tituloConteudo','".$urlArtigoP."');
+                    ?>
+                    </p>
+                    ".'<p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+               ".' <div id="galeriaImagens">
+                    <figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria1','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria">
+                        <?php
+                            '."infosImagensMateria('imagemgaleria2','".$codigo_materia."');
+                        ?>
+                    </figure>
+                    ".'<figure class="imagensGaleria" >
+                        <?php
+                           '." infosImagensMateria('imagemgaleria3','".$codigo_materia."');
+                        ?>
+                    </figure>
+                </div>
+                ".'<div id="conteudoMateria2">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria2','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="galeriaVideo">                    
+                    <p class="ediConteudoMateria">
+                    <?php
+                       '." infoArtigos('conteudoMateria','".$urlArtigoP."');
+                    ?>
+                    </p>
+                </div>
+                ".'<div id="colunista">     
+                    <figure id="autor_materia">
+                    <?php
+                       '." buscarImagemAutor('".$codigo_materia."');
+                    ?>
+                    </figure>
+                    ".'<div id="descricaoColunista"> 
+                        <p>                     
+                            <?php
+                                '."    buscarDescAutor('".$codigo_materia."');
+                            ?> 
+                        </p>
+                    </div>
+                </div>
+                ".'<div id="comentario">
+                    <div class="comentarios">
+                        
+                    <figure class="imagem_user"> 
+                        <?php
+                            buscarFotoUser();
+                        ?>
+                    </figure>
+                                            
+                    <div class="coment">
+                        '."<form name='frmComentar' method='post' action='../comentar.php' id='enviar'>
+                        <textarea id='textocomentario' name='comentario'> </textarea>                        
+                        ".'<input type="hidden" '."name='codigoArtigo' value='".$codigo_materia."' > 
+                        ".'<input type="submit" '."name='btnComentar' ".'value="Publicar" class="botaoEnviar" > 
+                        </form>
+                    </div>   
+                    </div>
+                    '."<div class='exibirComent'>
+                        <?php
+                            listarComentarios('".$codigo_materia."');
+                        ?>
+                    </div>
+                </div>
+            </article>
+            ".'<aside id="aside1">
+                    <?php
+                       buscarMateriasAside();
+                   ?>
+                <br/>
+            </aside>
+            <div id="voltarTopo">
+                <a href="" class="subir">
+                    <img src="imagens/topo.png" alt="">
+                    <p> Voltar ao topo </p>
+                </a>                    
+            </div>
+            <div id="imgFooter"'." ondragstart='return false'> 
+                ".'<img src="../imagens/ideiaRodape.png" alt=""> 
+            </div>
+            <footer id="footer">
+                <?php
+                    '."include_once '../includes/rodapeMaterias.php';
+                ?>
+            </footer>            
+        </section>
+    </body>
+</html>'";
+                                                                                        $url_materia = "../" . $urlArtigoP;
+                                                                                        $formatacao = $corpo;
+                                                                                        $fp = fopen($url_materia , "w");
+                                                                                        $fw = fwrite($fp, $formatacao);
                                                                                    }
                                                                                    else{
                                                                                        echo mysql_error();

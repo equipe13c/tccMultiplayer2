@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>TODO supply a title</title>
-         <link rel="stylesheet" type="text/css" href="css/style.css">
+         <link rel="stylesheet" type="text/css" href="css/style2.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
               <script type="text/javascript" src="js/jquery.min.js"></script>

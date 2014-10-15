@@ -61,100 +61,197 @@
   };
 })(jQuery);
 
+jQuery(function($){
+    var elementoMenu = $("#nav");
+    var posicaoMenu = elementoMenu.offset().top;
+    $(window).scroll(function(){
+        var posicaoAtualScroll = $(window).scrollTop();
+        if(posicaoAtualScroll > posicaoMenu){
+            elementoMenu.addClass('contentFullFixed');
+        } 
+        else{
+            elementoMenu.removeClass('contentFullFixed');
+        }
+    });
+});
+
 (function($){
-$(document).ready(function(){
+    $(document).ready(function(){
+        $(document).ready(function() {
+            $("#menu").menumaker({
+                title: "Menu",
+                format: "multitoggle"
+            });
+            $("#menu").prepend("<div id='menu-line'></div>");
+            var foundActive = false, activeElement, linePosition = 0, menuLine = $("#menu #menu-line"), lineWidth, defaultPosition, defaultWidth;
+            $("#menu > ul > li").each(function() {
+                if ($(this).hasClass('active')) {
+                    activeElement = $(this);
+                    foundActive = true;
+                }
+            });
 
-$(document).ready(function() {
-  $("#menu").menumaker({
-    title: "Menu",
-    format: "multitoggle"
-  });
-
-  $("#menu").prepend("<div id='menu-line'></div>");
-
-var foundActive = false, activeElement, linePosition = 0, menuLine = $("#menu #menu-line"), lineWidth, defaultPosition, defaultWidth;
-
-$("#menu > ul > li").each(function() {
-  if ($(this).hasClass('active')) {
-    activeElement = $(this);
-    foundActive = true;
-  }
-});
-
-if (foundActive === false) {
-  activeElement = $("#menu > ul > li").first();
-}
-
-defaultWidth = lineWidth = activeElement.width();
-
-defaultPosition = linePosition = activeElement.position().left;
-
-menuLine.css("width", lineWidth);
-menuLine.css("left", linePosition);
-
-$("#menu > ul > li").hover(function() {
-  activeElement = $(this);
-  lineWidth = activeElement.width();
-  linePosition = activeElement.position().left;
-  menuLine.css("width", lineWidth);
-  menuLine.css("left", linePosition);
-}, 
-function() {
-  menuLine.css("left", defaultPosition);
-  menuLine.css("width", defaultWidth);
-});
-
-});
-
-
-});
+            if (foundActive === false) {
+                activeElement = $("#menu > ul > li").first();
+            }
+            defaultWidth = lineWidth = activeElement.width();
+            defaultPosition = linePosition = activeElement.position().left;
+            menuLine.css("width", lineWidth);
+            menuLine.css("left", linePosition);
+            $("#menu > ul > li").hover(function() {
+                activeElement = $(this);
+                lineWidth = activeElement.width();
+                linePosition = activeElement.position().left;
+                menuLine.css("width", lineWidth);
+                menuLine.css("left", linePosition);
+            }, 
+            function() {
+                menuLine.css("left", defaultPosition);
+                menuLine.css("width", defaultWidth);
+            });
+        });
+    });
 })(jQuery);
-       
-(function($){
+
+//Slideshow
 $(document).ready(function(){
+               $('#slide').before('<img id="controleGaleria">').cycle({
+                   fx: 'fade',
+                   pause: true,
+                   timeout: 6000,
+                   next: '#next',
+                   prev: '#prev'
+               }); 
+            }); 
 
-$(document).ready(function() {
-  $("#menu2").menumaker({
-    title: "Menu2",
-    format: "multitoggle"
-  });
 
-  $("#menu2").prepend("<div id='menu2-line'></div>");
-
-var foundActive = false, activeElement, linePosition = 0, menuLine = $("#menu2 #menu2-line"), lineWidth, defaultPosition, defaultWidth;
-
-$("#menu2 > ul > li").each(function() {
-  if ($(this).hasClass('active')) {
-    activeElement = $(this);
-    foundActive = true;
-  }
+//Botão Voltar ao Topo
+$(document).ready(function(){
+    $(window).scroll(function(){
+       if($(this).scrollTop() > 600){
+           $('.subir').fadeIn();
+       }
+       else{
+           $('.subir').fadeOut();
+       }
+    }); 
+    $('.subir').click(function(){
+        $('html, body').scroll({ scrollTop: 0}, 5000);
+    });
 });
 
-if (foundActive === false) {
-  activeElement = $("#menu2 > ul > li").first();
-}
-
-defaultWidth = lineWidth = activeElement.width();
-
-defaultPosition = linePosition = activeElement.position().left;
-
-menuLine.css("width", lineWidth);
-menuLine.css("left", linePosition);
-
-$("#menu2 > ul > li").hover(function() {
-  activeElement = $(this);
-  lineWidth = activeElement.width();
-  linePosition = activeElement.position().left;
-  menuLine.css("width", lineWidth);
-  menuLine.css("left", linePosition);
-}, 
-function() {
-  menuLine.css("left", defaultPosition);
-  menuLine.css("width", defaultWidth);
+//Menu Reduzido
+$(document).ready(function(){
+    $(window).scroll(function(){
+       if($(this).scrollTop() > 300){
+           $('#navReduzido').fadeIn();
+           $('#nav').fadeOut();
+           $('#logar').fadeOut();
+       }
+       else{
+           $('#navReduzido').fadeOut();
+           $('#nav').fadeIn();           
+           $('#logar').fadeIn();
+       }
+    }); 
 });
 
-});
+//Validação de Login
+function validaLogin(form){
+    var filtro_mail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    if (!filtro_mail.test(form.emailLogin.value)){
+        alert("Preencha o E-mail corretamente.");
+        form.emailLogin.focus();
+        return false;
+    }
+    if (!filtro_mail.test(form.emailLogin.value) || form.emailLogin.value==""){
+        alert("Preencha o E-mail corretamente.");
+        form.emailLogin.focus();
+        return false;
+    }
+    if (form.senhaLogin.value==""){
+        alert("Preencha a senha corretamente.");
+        form.senhaLogin.focus();
+        return false;
+    }
+    if (form.senhaLogin.value=="" || form.senhaLogin.value.length < 8){
+        alert("A senha deve conter pelo menos 8 dígitos.");
+        form.senhaLogin.focus();
+        return false;
+    } 
+};
 
+//Validação de Cadastro
+function validaCadastro(form){    
+    if (form.nome.value==""){
+        alert("Preencha o nome corretamente.");
+        form.nome.focus();
+        return false;
+    }   
+    if (form.apelido.value==""){
+        alert("Preencha o apelido corretamente.");
+        form.apelido.focus();
+        return false;
+    }          
+    var filtro_mail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    if (!filtro_mail.test(form.email.value) || form.email.value==""){
+        alert("Preencha o E-mail corretamente.");
+        form.email.focus();
+        return false;
+    }
+    if (!filtro_mail.test(form.confirmaEmail.value) || form.confirmaEmail.value==""){
+        alert("Confirme seu E-mail corretamente.");
+        form.confirmaEmail.focus();
+        return false;
+    }
+    if (form.email.value!=form.confirmaEmail.value){
+        alert("O E-mail e a confirmação devem ser iguais");
+        form.confirmaEmail.focus();
+        return false;
+    }
+    if (form.senha.value==""){
+        alert("Preencha a senha corretamente.");
+        form.senha.focus();
+        return false;
+    }
+    if (form.senha.value=="" || form.senha.value.length < 8){
+        alert("A senha deve conter pelo menos 8 dígitos.");
+        form.senha.focus();
+        return false;
+    }                
+    if (form.confirmaSenha.value=="" || form.confirmaSenha.value.length < 8){
+        alert("Preencha a confirmação de senha corretamente.");
+        form.confirmaSenha.focus();
+        return false;
+    }
+    if (form.senha.value!=form.confirmaSenha.value){
+        alert("A senha e a confirmação devem de ser iguais.");
+        form.confirmaSenha.focus();
+        return false;
+    }
+    if (form.dataNascimento.value==""){
+        alert("Preencha a data de nascimento da seguinte forma: dd/mm/aaa.");
+        form.dataNascimento.focus();
+        return false;
+    }
+     if (form.termos.checked == false ){
+        alert("Você deve aceitar os Temos de Uso para se cadastrar.");
+        return false;
+    }
+    else{ return true;}
+};
 
-});
-});
+//Validação Contato
+function validaContato(form){
+    if (form.nomeContato.value==""){
+        alert("Preencha o nome corretamente.");
+        form.nomeContato.focus();
+        return false;
+    }  
+    var filtro_mail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;    
+    if (!filtro_mail.test(form.emailContato.value) || form.emailContato.value==""){
+        alert("Preencha o E-mail corretamente.");
+        form.emailContato.focus();
+        return false;
+    }
+};  

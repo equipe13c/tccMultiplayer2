@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>TODO supply a title</title>
-         <link rel="stylesheet" type="text/css" href="css/style.css">
+         <link rel="stylesheet" type="text/css" href="css/style2.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
@@ -12,6 +12,9 @@
         include '../conexao/conecta.inc';  
         include_once '../classes/Bcrypt.class.php';
         validaAutenticacao('../index.php', '1');
+        
+        
+        
         $name = $_POST['name'];
 $email = $_POST['email'];
 $senha = $_POST['password'];

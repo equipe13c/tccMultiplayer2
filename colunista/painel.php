@@ -8,8 +8,23 @@
         <script type="text/javascript" src="../js/cycle.js"></script>
         <script type="text/javascript" src="../js/javascript.js"></script>
         <script type="text/javascript" src="../js/menu2.js"></script>
-        <script type="text/javascript" src="../js/restrito.js"></script>
-        <title></title>
+        <script type="text/javascript" src="../js/restrito.js"></script><script type="text/javascript"> 
+            onload = function(){      
+                var imgMiniLogo = document.getElementById("imgMiniLogo");
+                var imgLogo = document.getElementById("img-logo");                
+                imgMiniLogo.innerHTML = '<img src="../imagens/logosReduzidos001.png" alt="" id="miniLogo">';
+                imgLogo.innerHTML = '<img src="../../imagens/logo001.png" alt="" id="logo">';
+                document.getElementById("navReduzido").style.backgroundColor = "#009FE3";  
+                document.getElementById("nav").style.backgroundColor = "#009FE3";              
+                document.getElementById("imgPrincipal").style.backgroundColor = "#009FE3"; 
+                document.getElementById("tituloMateria").style.backgroundColor = "#009FE3";
+                document.getElementById("logar").style.borderBottom = "solid 5px #009FE3"; 
+                document.getElementById("botaoLogin").style.backgroundColor = "#009FE3";
+                document.getElementById("tituloPagina").style.backgroundColor = "#009FE3";            
+
+            };
+        </script>
+        <title> Multiplayer </title>
     </head>
     <body >
         <section id="container" >
@@ -19,8 +34,8 @@
             ?>
             <header id="cabecalho">
                 <?php
-                include_once '../includes/menuR.php';
                 validaAutenticacao('../index.php','3');
+                include_once '../includes/menuR.php';
                 ?>
             </header>
             <figure id="imgCapa">
